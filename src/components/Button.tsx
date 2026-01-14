@@ -23,15 +23,15 @@ type ButtonAsLink = BaseProps &
 type ButtonProps = ButtonAsButton | ButtonAsLink;
 
 const variantStyles: Record<ButtonVariant, string> = {
-  primary: "bg-black text-white hover:bg-gray-800 active:scale-[0.98]",
+  primary: "bg-black text-white hover:bg-gray-900 active:scale-[0.98]",
   secondary: "bg-accent text-white hover:bg-accent-dark active:scale-[0.98]",
-  outline: "border border-black text-black hover:bg-black hover:text-white active:scale-[0.98]",
+  outline: "border border-gray-300 text-gray-900 hover:border-black hover:bg-black hover:text-white active:scale-[0.98]",
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
-  sm: "px-4 py-2 text-sm",
-  md: "px-6 py-3 text-base",
-  lg: "px-8 py-4 text-lg",
+  sm: "px-5 py-2 text-sm tracking-wide",
+  md: "px-6 py-3 text-sm tracking-wide",
+  lg: "px-8 py-3.5 text-base tracking-wide",
 };
 
 export function Button({

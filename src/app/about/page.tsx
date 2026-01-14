@@ -5,7 +5,7 @@ import { Button } from "@/components/Button";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "The story behind Black Cat Button Down. Bangkok craftsmanship meets New Orleans style.",
+    "Super soft cotton button-downs from Bangkok, sold in New Orleans. The story behind Black Cat.",
 };
 
 export default function AboutPage() {
@@ -14,49 +14,45 @@ export default function AboutPage() {
       {/* Header */}
       <section className="bg-black text-white py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-meta text-accent mb-4">Our Story</p>
+          <p className="text-meta text-accent mb-4">About Us</p>
           <h1 className="text-page-title mb-4">
-            About Black Cat
+            The Black Cat Story
           </h1>
           <p className="text-gray-400 max-w-lg mx-auto leading-relaxed">
-            Bangkok craft. New Orleans soul.
+            Super soft button-downs from Bangkok. Sold in New Orleans.
           </p>
         </div>
       </section>
 
-      {/* Story */}
-      <section className="py-16 md:py-24">
+      {/* The Shirts */}
+      <section className="section-gap">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="relative aspect-square">
               <Image
                 src="/images/bourbon-street-navy-1.svg"
-                alt="Bangkok workshop"
+                alt="Black Cat shirt detail"
                 fill
                 className="object-cover"
               />
             </div>
             <div className="space-y-6">
               <h2 className="text-section-title">
-                The Beginning
+                The Shirts
               </h2>
               <div className="space-y-4 text-gray-600 leading-relaxed">
-                <p>
-                  Black Cat Button Down was born from a simple observation: the
-                  best shirts in the world were being made in Bangkok, but nobody
-                  was bringing them to New Orleans.
+                <p className="text-lg">
+                  <strong className="text-black">Super soft cotton button-downs.</strong>
                 </p>
                 <p>
-                  Founded by a transplant who fell in love with both cities, we
-                  set out to bridge that gap. We partnered with master tailors in
-                  Bangkok&apos;s historic garment district—craftspeople who have been
-                  perfecting their art for generations.
+                  Wear them to a bar. Wear them on a boat. Wear them to a casual
+                  Sunday brunch or a festive Friday night. These shirts work
+                  anywhere you do.
                 </p>
                 <p>
-                  Every stitch, every button, every collar is a testament to their
-                  skill. And every shirt is designed with the spirit of New
-                  Orleans in mind: bold, distinctive, and just a little bit
-                  rebellious.
+                  Each one is sourced from Bangkok, Thailand—from the
+                  most-excellent workshops where quality cotton and careful
+                  craftsmanship come together.
                 </p>
               </div>
             </div>
@@ -64,36 +60,36 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Manufacturing */}
-      <section className="py-16 md:py-24 bg-gray-50">
+      {/* Sizing */}
+      <section className="section-gap bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="order-2 lg:order-1 space-y-6">
               <h2 className="text-section-title">
-                The Craft
+                Sizing Notes
               </h2>
               <div className="space-y-4 text-gray-600 leading-relaxed">
                 <p>
-                  Our shirts are made in small batches in Bangkok, Thailand. We
-                  work with a single workshop that shares our commitment to
-                  quality over quantity.
+                  <strong className="text-black">Available in M, L, XL, and XXL.</strong>
                 </p>
                 <p>
-                  We source fabrics from around the world—Egyptian cotton, Belgian
-                  linen, Japanese oxford cloth—and have them crafted by hands that
-                  know exactly what they&apos;re doing. No shortcuts, no
-                  mass-production techniques.
+                  Fair warning: these shirts trend toward Thai sizing, which
+                  means they run a bit smaller than typical American cuts. If
+                  you normally wear a fitted medium, you might want to size up.
                 </p>
                 <p>
-                  The result? Shirts that feel different the moment you put them
-                  on. The kind of quality you can actually feel.
+                  Not sure? Drop us a line with your measurements and we&apos;ll
+                  help you find the right fit. We want you to love your shirt.
                 </p>
               </div>
+              <Button href="/faq#sizing" variant="outline">
+                View Size Guide
+              </Button>
             </div>
             <div className="order-1 lg:order-2 relative aspect-square">
               <Image
                 src="/images/garden-district-stripe-1.svg"
-                alt="Craftsmanship detail"
+                alt="Shirt fit example"
                 fill
                 className="object-cover"
               />
@@ -102,47 +98,35 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Sizing Philosophy */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      {/* Care */}
+      <section className="section-gap">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-section-title mb-6">
-            Our Fit Philosophy
+            Care Instructions
           </h2>
           <div className="space-y-4 text-gray-600 leading-relaxed">
-            <p>
-              We believe a great shirt should feel like it was made for you. Our
-              designs feature a modern, slightly relaxed fit that works whether
-              you&apos;re dressed up or keeping it casual.
+            <p className="text-lg font-medium text-black">
+              The only thing you can&apos;t do in these? Party inside of a dryer.
             </p>
             <p>
-              Not too slim, not too boxy—just right. We&apos;ve refined our patterns
-              over hundreds of fittings to find that sweet spot where comfort
-              meets style.
+              Wash on cold. Always line dry. That&apos;s it. Treat them right and
+              they&apos;ll treat you right for years.
             </p>
-            <p>
-              Unsure about sizing? Reach out. We&apos;re happy to help you find your
-              perfect fit, and we&apos;ll make it right if something doesn&apos;t work.
-            </p>
-          </div>
-          <div className="mt-8">
-            <Button href="/faq#sizing" variant="outline">
-              View Size Guide
-            </Button>
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-24 bg-black text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="section-gap bg-black text-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-section-title mb-4">
-            Ready to Experience the Difference?
+            Ready to see what the fuss is about?
           </h2>
-          <p className="text-gray-400 mb-8">
-            Browse our collection and find your next favorite shirt.
+          <p className="text-gray-400 mb-8 leading-relaxed">
+            Browse the collection. Find your shirt. We&apos;ll take it from there.
           </p>
           <Button href="/shop" variant="secondary" size="lg">
-            Shop Now
+            Shop the Collection
           </Button>
         </div>
       </section>

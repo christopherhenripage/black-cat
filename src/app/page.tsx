@@ -2,11 +2,8 @@ import Image from "next/image";
 import { Button } from "@/components/Button";
 import { ProductCard } from "@/components/ProductCard";
 import { TimeGreeting } from "@/components/TimeGreeting";
-import { JourneyMap } from "@/components/JourneyMap";
 import { RevealSection } from "@/components/RevealSection";
-import { DropMemory } from "@/components/DropMemory";
 import { BlackCatLogo } from "@/components/BlackCatLogo";
-import { PeekingCat } from "@/components/PeekingCat";
 import { getFeaturedProducts } from "@/lib/products";
 
 export default function Home() {
@@ -17,40 +14,37 @@ export default function Home() {
       {/* Time Greeting */}
       <TimeGreeting className="bg-gray-50 border-b border-gray-100" />
 
-      {/* Hero Section */}
-      <section className="relative min-h-[80vh] flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-black text-white overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/80 z-10" />
-        {/* Tropical accent glow */}
-        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-bl from-tropical-pink/20 via-transparent to-transparent z-0" />
-        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-tropical-teal/15 via-transparent to-transparent z-0" />
+      {/* Hero Section - Editorial, minimal */}
+      <section className="relative min-h-[85vh] flex items-center justify-center bg-black text-white overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/70 z-10" />
         <div className="absolute inset-0">
           <Image
             src="/images/midnight-classic-1.svg"
             alt="Hero background"
             fill
-            className="object-cover opacity-40"
+            className="object-cover opacity-30"
             priority
           />
         </div>
-        <div className="relative z-20 text-center px-4 max-w-4xl mx-auto animate-fade-in">
-          <p className="text-accent font-medium tracking-widest uppercase mb-4 text-sm">
-            Created in Bangkok / Sold in New Orleans
-          </p>
+        <div className="relative z-20 text-center px-4 max-w-3xl mx-auto">
           {/* Black Cat Logo */}
-          <div className="flex justify-center mb-6">
+          <div className="flex justify-center mb-8">
             <BlackCatLogo size="xl" color="black" animated />
           </div>
-          <h1 className="text-page-title mb-6">
-            Black Cat Button Down
+          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tight mb-6">
+            Black Cat
           </h1>
-          <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-xl mx-auto leading-relaxed">
-            Shirts made by hand in Bangkok. Worn with intention in New Orleans.
+          <p className="text-lg md:text-xl text-gray-300 mb-4 max-w-md mx-auto leading-relaxed">
+            Super soft button-downs from Bangkok.
+          </p>
+          <p className="text-sm text-gray-500 mb-10 tracking-wide">
+            Sold in New Orleans
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button href="/shop" variant="secondary" size="lg">
               Shop Collection
             </Button>
-            <Button href="/order" variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-black">
+            <Button href="/order" variant="outline" size="lg" className="border-white/40 text-white hover:bg-white hover:text-black">
               Request to Order
             </Button>
           </div>
@@ -82,38 +76,14 @@ export default function Home() {
         </RevealSection>
       </section>
 
-      {/* Journey Map */}
-      <section className="py-16 bg-gradient-to-br from-black via-gray-900 to-black text-white overflow-hidden relative">
-        {/* Tropical accent glows */}
-        <div className="absolute top-0 left-0 w-1/3 h-1/2 bg-gradient-to-br from-tropical-teal/10 via-transparent to-transparent" />
-        <div className="absolute bottom-0 right-0 w-1/3 h-1/2 bg-gradient-to-tl from-tropical-pink/10 via-transparent to-transparent" />
-        {/* Decorative stars */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-10 left-10 w-2 h-2 bg-tropical-yellow rounded-full opacity-60" />
-          <div className="absolute top-20 right-20 w-1 h-1 bg-tropical-pink rounded-full opacity-40" />
-          <div className="absolute top-32 left-1/4 w-1.5 h-1.5 bg-tropical-teal rounded-full opacity-50" />
-          <div className="absolute bottom-20 right-1/3 w-1 h-1 bg-tropical-green rounded-full opacity-30" />
-          <div className="absolute top-1/2 left-20 w-1 h-1 bg-tropical-coral rounded-full opacity-40" />
-        </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <RevealSection className="text-center mb-8">
-            <h2 className="font-display text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-yellow-200 via-pink-200 to-green-200 bg-clip-text text-transparent">
-              The Journey
-            </h2>
-            <p className="text-pink-200 text-lg">From Bangkok workshops to New Orleans streets</p>
-          </RevealSection>
-          <JourneyMap />
-        </div>
-      </section>
-
-      {/* Story Section */}
+      {/* Story Section - Editorial asymmetry */}
       <section className="section-gap bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <RevealSection direction="left">
-              <div className="relative aspect-square bg-gradient-to-br from-gray-900 via-gray-800 to-black overflow-hidden flex items-center justify-center">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            <RevealSection direction="left" className="lg:col-span-5">
+              <div className="relative aspect-[4/5] bg-black overflow-hidden flex items-center justify-center">
                 {/* Large cat illustration */}
-                <svg viewBox="0 0 200 200" className="w-3/4 h-3/4 text-accent opacity-90">
+                <svg viewBox="0 0 200 200" className="w-2/3 h-2/3 text-accent">
                   <path d="M50 70 L70 30 L90 70 Z" fill="currentColor" />
                   <path d="M110 70 L130 30 L150 70 Z" fill="currentColor" />
                   <ellipse cx="100" cy="90" rx="55" ry="45" fill="currentColor" />
@@ -127,29 +97,25 @@ export default function Home() {
                 </svg>
               </div>
             </RevealSection>
-            <RevealSection direction="right" delay={200}>
-              <div className="space-y-6">
-                <p className="text-meta text-accent">Our Story</p>
-                <h2 className="text-section-title">
-                  Bangkok craft meets
-                  <br />
-                  New Orleans character.
+            <RevealSection direction="right" delay={200} className="lg:col-span-6 lg:col-start-7">
+              <div className="space-y-6 max-w-md">
+                <p className="text-meta text-accent">The Story</p>
+                <h2 className="text-section-title leading-tight">
+                  Wear them anywhere.
                 </h2>
-                <div className="space-y-4 text-body-light">
+                <div className="space-y-4 text-gray-600 leading-relaxed">
                   <p>
-                    Every shirt starts in Bangkok workshops, where tailors cut and
-                    stitch with care passed down through generations. We choose fabrics
-                    for their hand-feel and how they wear over time.
+                    Bar. Boat. Casual Sunday. Festive Friday. These shirts work
+                    anywhere you do.
                   </p>
                   <p>
-                    From there, each piece finds its way to New Orleans—a city that
-                    doesn&apos;t do ordinary. Our shirts are made for people who appreciate
-                    the difference.
+                    Sourced from Bangkok workshops. Sold in New Orleans. Each one
+                    made with quality cotton and careful attention to how it feels
+                    and how it wears.
                   </p>
                 </div>
-                <DropMemory className="my-6" />
                 <Button href="/about" variant="outline">
-                  Read More
+                  Learn More
                 </Button>
               </div>
             </RevealSection>
