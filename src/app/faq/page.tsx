@@ -14,19 +14,19 @@ const faqs = [
     questions: [
       {
         q: "How do I place an order?",
-        a: "We use a request-based ordering system. Browse our collection, find what you like, and submit an order request through our website. We'll confirm availability and send you a payment link within 24-48 hours.",
+        a: "We use a request-based ordering system. Browse our collection, find what you like, and submit an order request through our website. We'll confirm availability within 24-48 hours, then coordinate pickup/shipping and payment offline.",
       },
       {
         q: "Why don't you have a traditional shopping cart?",
         a: "We're a small operation that values personal service. Our request system lets us confirm availability, answer questions, and ensure you're getting exactly what you want before you pay.",
       },
       {
-        q: "What payment methods do you accept?",
-        a: "We accept all major credit cards, debit cards, and PayPal. Payment is processed securely after your order is confirmed.",
+        q: "How does payment work?",
+        a: "Payment is coordinated after confirmation (offline). We'll discuss options when we confirm your order—typically cash, Venmo, or Zelle for local orders.",
       },
       {
         q: "Can I cancel my order?",
-        a: "Yes, you can cancel anytime before payment. Once payment is received, cancellations may be subject to a restocking fee depending on the status of your order.",
+        a: "Yes, you can cancel anytime before we finalize the order. Once an order is confirmed and payment is arranged, cancellations may be subject to a restocking fee.",
       },
     ],
   },

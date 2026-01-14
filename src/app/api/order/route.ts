@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { validateOrderRequest } from "@/lib/validation";
 import { checkRateLimit, getRateLimitIdentifier } from "@/lib/rate-limit";
 import { sendOrderEmails } from "@/lib/email";
+import prisma from "@/lib/db";
 
 export async function POST(request: NextRequest) {
   try {
@@ -45,6 +46,33 @@ export async function POST(request: NextRequest) {
         { error: validation.error },
         { status: 400 }
       );
+    }
+
+    // Save to database
+    const fulfillmentMap: Record<string, "PICKUP" | "DELIVERY" | "SHIPPING"> = {
+      pickup: "PICKUP",
+      delivery: "DELIVERY",
+      shipping: "SHIPPING",
+    };
+
+    try {
+      await prisma.orderRequest.create({
+        data: {
+          customerName: validation.data!.name,
+          email: validation.data!.email,
+          phone: validation.data!.phone || null,
+          productSlug: validation.data!.productSlug,
+          variantSize: validation.data!.size || "Unknown",
+          quantity: validation.data!.quantity,
+          fulfillmentMethod:
+            fulfillmentMap[validation.data!.fulfillmentMethod] || "PICKUP",
+          shippingAddress: validation.data!.shippingAddress || null,
+          notes: validation.data!.notes || null,
+        },
+      });
+    } catch (dbError) {
+      console.error("Failed to save order request to database:", dbError);
+      // Continue even if DB save fails
     }
 
     // Send emails

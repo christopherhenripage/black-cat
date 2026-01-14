@@ -29,9 +29,9 @@ const orderSteps = [
   },
   {
     number: "04",
-    title: "Payment",
+    title: "Coordination",
     description:
-      "Once confirmed, we'll send a secure payment link. We accept all major cards and PayPal.",
+      "We'll confirm availability and total within 24-48 hours, then coordinate pickup/shipping and payment offline.",
   },
   {
     number: "05",

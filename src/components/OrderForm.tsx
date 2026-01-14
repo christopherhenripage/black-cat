@@ -527,8 +527,7 @@ export function OrderForm({
       </Button>
 
       <p className="text-xs text-gray-500 text-center">
-        This is a request, not a purchase. We&apos;ll contact you to confirm
-        availability and arrange payment.
+        We reply within 24-48 hours to confirm availability and coordinate pickup/shipping and payment offline.
       </p>
     </form>
   );

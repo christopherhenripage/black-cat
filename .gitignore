@@ -34,3 +34,9 @@ Thumbs.db
 *.tsbuildinfo
 next-env.d.ts
 .env*.local
+
+/src/generated/prisma
+
+# Prisma
+*.db
+*.db-journal
