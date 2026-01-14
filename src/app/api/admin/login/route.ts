@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createSession, setSessionCookie, verifyPassword } from "@/lib/admin-auth";
+import { createSession, verifyPassword } from "@/lib/admin-auth";
 import { z } from "zod";
 
 const loginSchema = z.object({
   password: z.string().min(1, "Password is required"),
 });
+
+const SESSION_DURATION_MS = 24 * 60 * 60 * 1000; // 24 hours
 
 export async function POST(request: NextRequest) {
   try {
@@ -19,9 +21,17 @@ export async function POST(request: NextRequest) {
     }
 
     const signedToken = await createSession();
-    await setSessionCookie(signedToken);
 
-    return NextResponse.json({ success: true });
+    const response = NextResponse.json({ success: true });
+    response.cookies.set("admin_session", signedToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      maxAge: SESSION_DURATION_MS / 1000,
+      path: "/",
+    });
+
+    return response;
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(

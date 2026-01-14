@@ -1,19 +1,10 @@
 import { NextResponse } from "next/server";
-import {
-  getSessionFromCookies,
-  destroySession,
-  clearSessionCookie,
-} from "@/lib/admin-auth";
 
 export async function POST() {
   try {
-    const signedToken = await getSessionFromCookies();
-    if (signedToken) {
-      await destroySession(signedToken);
-    }
-    await clearSessionCookie();
-
-    return NextResponse.json({ success: true });
+    const response = NextResponse.json({ success: true });
+    response.cookies.delete("admin_session");
+    return response;
   } catch (error) {
     console.error("Logout error:", error);
     return NextResponse.json(

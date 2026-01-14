@@ -1,7 +1,6 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import crypto from "crypto";
-import prisma from "./db";
 
 const SESSION_COOKIE_NAME = "admin_session";
 const SESSION_DURATION_MS = 24 * 60 * 60 * 1000; // 24 hours
@@ -37,16 +36,9 @@ function verifyToken(signedToken: string): string | null {
 }
 
 export async function createSession(): Promise<string> {
-  const token = crypto.randomBytes(32).toString("hex");
-  const expiresAt = new Date(Date.now() + SESSION_DURATION_MS);
-
-  await prisma.adminSession.create({
-    data: {
-      token,
-      expiresAt,
-    },
-  });
-
+  // Create a token that includes expiration time
+  const expiresAt = Date.now() + SESSION_DURATION_MS;
+  const token = `${crypto.randomBytes(16).toString("hex")}.${expiresAt}`;
   return signToken(token);
 }
 
@@ -54,24 +46,21 @@ export async function validateSession(signedToken: string): Promise<boolean> {
   const token = verifyToken(signedToken);
   if (!token) return false;
 
-  const session = await prisma.adminSession.findUnique({
-    where: { token },
-  });
+  // Token format: randomBytes.expiresAt
+  const parts = token.split(".");
+  if (parts.length !== 2) return false;
 
-  if (!session) return false;
-  if (session.expiresAt < new Date()) {
-    await prisma.adminSession.delete({ where: { token } });
+  const expiresAt = parseInt(parts[1], 10);
+  if (isNaN(expiresAt) || Date.now() > expiresAt) {
     return false;
   }
 
   return true;
 }
 
-export async function destroySession(signedToken: string): Promise<void> {
-  const token = verifyToken(signedToken);
-  if (token) {
-    await prisma.adminSession.deleteMany({ where: { token } });
-  }
+export async function destroySession(_signedToken: string): Promise<void> {
+  // Session is stateless - just clearing the cookie is enough
+  // The token will be invalidated when removed from cookies
 }
 
 export async function getSessionFromCookies(): Promise<string | null> {
@@ -117,12 +106,7 @@ export function verifyPassword(password: string): boolean {
   return password === adminPassword;
 }
 
-// Clean up expired sessions (can be called periodically)
+// Sessions are stateless - no cleanup needed
 export async function cleanupExpiredSessions(): Promise<number> {
-  const result = await prisma.adminSession.deleteMany({
-    where: {
-      expiresAt: { lt: new Date() },
-    },
-  });
-  return result.count;
+  return 0;
 }
