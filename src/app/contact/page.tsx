@@ -11,13 +11,13 @@ export default function ContactPage() {
   return (
     <div className="pb-20 md:pb-0">
       {/* Header */}
-      <section className="bg-black text-white py-16 md:py-24">
+      <section className="bg-black text-white py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">
-            Contact
+          <h1 className="text-page-title mb-4">
+            Get in Touch
           </h1>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            Got questions? We&apos;d love to hear from you.
+          <p className="text-gray-400 max-w-lg mx-auto leading-relaxed">
+            Questions, comments, or just want to say hello.
           </p>
         </div>
       </section>

@@ -23,9 +23,9 @@ type ButtonAsLink = BaseProps &
 type ButtonProps = ButtonAsButton | ButtonAsLink;
 
 const variantStyles: Record<ButtonVariant, string> = {
-  primary: "bg-black text-white hover:bg-gray-800",
-  secondary: "bg-accent text-white hover:bg-accent-dark",
-  outline: "border-2 border-black text-black hover:bg-black hover:text-white",
+  primary: "bg-black text-white hover:bg-gray-800 active:scale-[0.98]",
+  secondary: "bg-accent text-white hover:bg-accent-dark active:scale-[0.98]",
+  outline: "border border-black text-black hover:bg-black hover:text-white active:scale-[0.98]",
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
@@ -43,7 +43,7 @@ export function Button({
   ...props
 }: ButtonProps) {
   const baseStyles =
-    "inline-flex items-center justify-center font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed";
+    "inline-flex items-center justify-center font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed";
 
   const combinedStyles = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${
     fullWidth ? "w-full" : ""

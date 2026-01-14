@@ -13,6 +13,17 @@
   --tropical-coral: #fb7185;
   --tropical-yellow: #fbbf24;
   --tropical-blue: #38bdf8;
+
+  /* Typography scale */
+  --text-page-title: clamp(2.5rem, 5vw, 4rem);
+  --text-section-title: clamp(1.75rem, 3vw, 2.5rem);
+  --text-body: 1rem;
+  --text-small: 0.875rem;
+  --text-meta: 0.75rem;
+
+  /* Spacing scale */
+  --section-gap: clamp(4rem, 8vw, 8rem);
+  --content-width: 65ch;
 }
 
 @theme inline {
@@ -200,6 +211,67 @@ button {
   50% {
     opacity: 0.7;
   }
+}
+
+/* Typography utilities */
+.text-page-title {
+  font-size: var(--text-page-title);
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.text-section-title {
+  font-size: var(--text-section-title);
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.text-body {
+  font-size: var(--text-body);
+  line-height: 1.7;
+}
+
+.text-body-light {
+  font-size: var(--text-body);
+  line-height: 1.7;
+  font-weight: 300;
+  color: #4b5563;
+}
+
+.text-small {
+  font-size: var(--text-small);
+  line-height: 1.5;
+}
+
+.text-meta {
+  font-size: var(--text-meta);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Section spacing */
+.section-gap {
+  padding-top: var(--section-gap);
+  padding-bottom: var(--section-gap);
+}
+
+/* Content width for editorial reading */
+.prose-width {
+  max-width: var(--content-width);
+}
+
+/* Subtle hover transitions */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.15);
 }
 
 /* Utility animations */

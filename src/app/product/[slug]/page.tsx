@@ -84,7 +84,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               <p className="text-accent font-medium tracking-widest uppercase text-sm mb-2">
                 {product.type}
               </p>
-              <h1 className="font-display text-3xl md:text-4xl font-bold mb-4">
+              <h1 className="text-section-title mb-4">
                 {product.name}
               </h1>
               {product.price && (
@@ -147,9 +147,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
             {/* Order Form */}
             <div className="border-t pt-8">
-              <h2 className="font-display text-xl font-bold mb-6">
+              <h2 className="font-display text-xl font-semibold mb-2">
                 Request to Order
               </h2>
+              <p className="text-sm text-gray-500 mb-6">
+                We&apos;ll reply within 24–48 hours to confirm availability and coordinate pickup or shipping.
+              </p>
               <OrderForm product={product} />
             </div>
           </div>

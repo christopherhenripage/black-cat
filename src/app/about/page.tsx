@@ -12,16 +12,14 @@ export default function AboutPage() {
   return (
     <div className="pb-20 md:pb-0">
       {/* Header */}
-      <section className="bg-black text-white py-16 md:py-24">
+      <section className="bg-black text-white py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-accent font-medium tracking-widest uppercase mb-4 text-sm">
-            Our Story
-          </p>
-          <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">
+          <p className="text-meta text-accent mb-4">Our Story</p>
+          <h1 className="text-page-title mb-4">
             About Black Cat
           </h1>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            Where Bangkok craftsmanship meets New Orleans soul.
+          <p className="text-gray-400 max-w-lg mx-auto leading-relaxed">
+            Bangkok craft. New Orleans soul.
           </p>
         </div>
       </section>
@@ -39,7 +37,7 @@ export default function AboutPage() {
               />
             </div>
             <div className="space-y-6">
-              <h2 className="font-display text-3xl md:text-4xl font-bold">
+              <h2 className="text-section-title">
                 The Beginning
               </h2>
               <div className="space-y-4 text-gray-600 leading-relaxed">
@@ -71,7 +69,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1 space-y-6">
-              <h2 className="font-display text-3xl md:text-4xl font-bold">
+              <h2 className="text-section-title">
                 The Craft
               </h2>
               <div className="space-y-4 text-gray-600 leading-relaxed">
@@ -107,7 +105,7 @@ export default function AboutPage() {
       {/* Sizing Philosophy */}
       <section className="py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
+          <h2 className="text-section-title mb-6">
             Our Fit Philosophy
           </h2>
           <div className="space-y-4 text-gray-600 leading-relaxed">
@@ -137,7 +135,7 @@ export default function AboutPage() {
       {/* CTA */}
       <section className="py-16 md:py-24 bg-black text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-section-title mb-4">
             Ready to Experience the Difference?
           </h2>
           <p className="text-gray-400 mb-8">

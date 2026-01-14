@@ -23,14 +23,13 @@ export default function ShopPage() {
   return (
     <div className="pb-20 md:pb-0">
       {/* Header */}
-      <section className="bg-black text-white py-16 md:py-24">
+      <section className="bg-black text-white py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">
-            Shop
+          <h1 className="text-page-title mb-4">
+            The Collection
           </h1>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            Browse our collection of handcrafted button-down shirts. Each piece
-            is made to order with premium materials.
+          <p className="text-gray-400 max-w-lg mx-auto leading-relaxed">
+            Handcrafted in Bangkok. Each shirt made to order.
           </p>
         </div>
       </section>

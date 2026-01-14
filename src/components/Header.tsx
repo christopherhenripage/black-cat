@@ -111,11 +111,11 @@ export function Header() {
         </div>
       )}
 
-      {/* Mobile Sticky CTA */}
-      <div className="fixed bottom-0 left-0 right-0 md:hidden bg-black p-4 z-50">
+      {/* Mobile Sticky CTA - subtle, refined */}
+      <div className="fixed bottom-0 left-0 right-0 md:hidden bg-white/95 backdrop-blur-sm border-t border-gray-200 py-3 px-4 z-50">
         <Link
           href="/order"
-          className="block w-full py-3 text-center text-base font-medium text-white bg-accent hover:bg-accent-dark transition-colors"
+          className="block w-full py-2.5 text-center text-sm font-medium text-white bg-black hover:bg-gray-800 transition-colors"
         >
           Request to Order
         </Link>

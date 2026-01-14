@@ -53,14 +53,13 @@ export default function OrderPage() {
   return (
     <div className="pb-20 md:pb-0">
       {/* Header */}
-      <section className="bg-black text-white py-16 md:py-24">
+      <section className="bg-black text-white py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">
+          <h1 className="text-page-title mb-4">
             How to Order
           </h1>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            We don&apos;t do traditional e-commerce. Every order is personal, and we
-            make sure each shirt finds the right home.
+          <p className="text-gray-400 max-w-lg mx-auto leading-relaxed">
+            Personal service, not e-commerce. Every shirt finds the right home.
           </p>
         </div>
       </section>
