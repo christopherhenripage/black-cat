@@ -172,7 +172,7 @@ export function FloatingCat() {
         animation: "catWalk 8s linear forwards",
       }}
     >
-      <svg viewBox="0 0 100 50" className="w-20 h-10">
+      <svg viewBox="0 0 100 50" className="w-20 h-10" style={{ transform: 'scaleX(-1)' }}>
         {/* Tail - animated wave */}
         <path
           d="M85 20 Q 95 15, 98 22 Q 100 30, 95 25"

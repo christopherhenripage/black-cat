@@ -18,8 +18,11 @@ export default function Home() {
       <TimeGreeting className="bg-gray-50 border-b border-gray-100" />
 
       {/* Hero Section */}
-      <section className="relative min-h-[80vh] flex items-center justify-center bg-gradient-to-br from-purple-900 via-fuchsia-800 to-orange-700 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-purple-900/30 to-fuchsia-900/50 z-10" />
+      <section className="relative min-h-[80vh] flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-black text-white overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/80 z-10" />
+        {/* Tropical accent glow */}
+        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-bl from-tropical-pink/20 via-transparent to-transparent z-0" />
+        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-tropical-teal/15 via-transparent to-transparent z-0" />
         <div className="absolute inset-0">
           <Image
             src="/images/midnight-classic-1.svg"
@@ -35,7 +38,7 @@ export default function Home() {
           </p>
           {/* Black Cat Logo */}
           <div className="flex justify-center mb-6">
-            <BlackCatLogo size="xl" color="white" animated />
+            <BlackCatLogo size="xl" color="black" animated />
           </div>
           <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight">
             Black Cat Button Down
@@ -89,14 +92,17 @@ export default function Home() {
       </section>
 
       {/* Journey Map */}
-      <section className="py-16 bg-gradient-to-br from-purple-900 via-pink-900 to-orange-900 text-white overflow-hidden relative">
+      <section className="py-16 bg-gradient-to-br from-black via-gray-900 to-black text-white overflow-hidden relative">
+        {/* Tropical accent glows */}
+        <div className="absolute top-0 left-0 w-1/3 h-1/2 bg-gradient-to-br from-tropical-teal/10 via-transparent to-transparent" />
+        <div className="absolute bottom-0 right-0 w-1/3 h-1/2 bg-gradient-to-tl from-tropical-pink/10 via-transparent to-transparent" />
         {/* Decorative stars */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-10 left-10 w-2 h-2 bg-white rounded-full opacity-60" />
-          <div className="absolute top-20 right-20 w-1 h-1 bg-white rounded-full opacity-40" />
-          <div className="absolute top-32 left-1/4 w-1.5 h-1.5 bg-white rounded-full opacity-50" />
-          <div className="absolute bottom-20 right-1/3 w-1 h-1 bg-white rounded-full opacity-30" />
-          <div className="absolute top-1/2 left-20 w-1 h-1 bg-white rounded-full opacity-40" />
+          <div className="absolute top-10 left-10 w-2 h-2 bg-tropical-yellow rounded-full opacity-60" />
+          <div className="absolute top-20 right-20 w-1 h-1 bg-tropical-pink rounded-full opacity-40" />
+          <div className="absolute top-32 left-1/4 w-1.5 h-1.5 bg-tropical-teal rounded-full opacity-50" />
+          <div className="absolute bottom-20 right-1/3 w-1 h-1 bg-tropical-green rounded-full opacity-30" />
+          <div className="absolute top-1/2 left-20 w-1 h-1 bg-tropical-coral rounded-full opacity-40" />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <RevealSection className="text-center mb-8">
@@ -110,7 +116,9 @@ export default function Home() {
       </section>
 
       {/* Story Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-white via-pink-50/30 to-teal-50/30 relative overflow-hidden">
+      <section className="py-16 md:py-24 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
+        {/* Tropical accent borders */}
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-tropical-teal via-tropical-pink to-tropical-yellow" />
         {/* Decorative elements */}
         <div className="absolute bottom-0 left-0 w-48 h-48 opacity-10">
           <svg viewBox="0 0 100 100" className="w-full h-full">
@@ -124,7 +132,7 @@ export default function Home() {
             <RevealSection direction="left">
               <div className="relative aspect-square bg-gradient-to-br from-tropical-teal via-tropical-green to-tropical-pink rounded-lg overflow-hidden flex items-center justify-center">
                 {/* Large cat illustration */}
-                <svg viewBox="0 0 200 200" className="w-3/4 h-3/4 text-white opacity-90">
+                <svg viewBox="0 0 200 200" className="w-3/4 h-3/4 text-black opacity-90">
                   <path d="M50 70 L70 30 L90 70 Z" fill="currentColor" />
                   <path d="M110 70 L130 30 L150 70 Z" fill="currentColor" />
                   <ellipse cx="100" cy="90" rx="55" ry="45" fill="currentColor" />
