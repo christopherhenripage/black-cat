@@ -1,0 +1,15 @@
+<svg width="600" height="800" viewBox="0 0 600 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="800" fill="#1a2744"/>
+  <rect x="150" y="120" width="300" height="400" rx="8" fill="#1e3a5f" stroke="#2a4a6f" stroke-width="2"/>
+  <rect x="220" y="180" width="160" height="20" rx="4" fill="#152d4a"/>
+  <circle cx="300" cy="280" r="8" fill="#4a5a6a"/>
+  <circle cx="300" cy="320" r="8" fill="#4a5a6a"/>
+  <circle cx="300" cy="360" r="8" fill="#4a5a6a"/>
+  <circle cx="300" cy="400" r="8" fill="#4a5a6a"/>
+  <circle cx="300" cy="440" r="8" fill="#4a5a6a"/>
+  <rect x="160" y="130" width="80" height="200" rx="4" fill="#1e3a5f" stroke="#2a4a6f"/>
+  <rect x="360" y="130" width="80" height="200" rx="4" fill="#1e3a5f" stroke="#2a4a6f"/>
+  <rect x="200" y="280" width="50" height="60" rx="4" fill="#152d4a"/>
+  <text x="300" y="600" font-family="system-ui" font-size="24" fill="#8899aa" text-anchor="middle">Bourbon Street Navy</text>
+  <text x="300" y="640" font-family="system-ui" font-size="16" fill="#667788" text-anchor="middle">Front View</text>
+</svg>

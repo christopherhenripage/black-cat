@@ -1,0 +1,9 @@
+<svg width="600" height="800" viewBox="0 0 600 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="800" fill="#1a2744"/>
+  <rect x="200" y="200" width="200" height="120" rx="8" fill="#1e3a5f" stroke="#2a4a6f" stroke-width="2"/>
+  <circle cx="300" cy="260" r="12" fill="#4a5a6a" stroke="#5a6a7a" stroke-width="2"/>
+  <rect x="150" y="380" width="300" height="200" rx="8" fill="#1e3a5f" stroke="#2a4a6f" stroke-width="2"/>
+  <line x1="300" y1="380" x2="300" y2="580" stroke="#2a4a6f" stroke-width="2"/>
+  <text x="300" y="650" font-family="system-ui" font-size="24" fill="#8899aa" text-anchor="middle">Bourbon Street Navy</text>
+  <text x="300" y="690" font-family="system-ui" font-size="16" fill="#667788" text-anchor="middle">Detail View</text>
+</svg>

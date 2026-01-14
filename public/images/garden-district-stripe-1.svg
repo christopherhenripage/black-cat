@@ -1,0 +1,19 @@
+<svg width="600" height="800" viewBox="0 0 600 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="800" fill="#f8f8f8"/>
+  <defs>
+    <pattern id="stripes1" patternUnits="userSpaceOnUse" width="20" height="20">
+      <rect width="20" height="20" fill="#ffffff"/>
+      <rect width="10" height="20" fill="#1a3a5a"/>
+    </pattern>
+  </defs>
+  <rect x="150" y="120" width="300" height="400" rx="8" fill="url(#stripes1)" stroke="#ddd" stroke-width="2"/>
+  <circle cx="300" cy="280" r="8" fill="#e8e0d0"/>
+  <circle cx="300" cy="320" r="8" fill="#e8e0d0"/>
+  <circle cx="300" cy="360" r="8" fill="#e8e0d0"/>
+  <circle cx="300" cy="400" r="8" fill="#e8e0d0"/>
+  <circle cx="300" cy="440" r="8" fill="#e8e0d0"/>
+  <rect x="160" y="130" width="80" height="200" rx="4" fill="url(#stripes1)" stroke="#ddd"/>
+  <rect x="360" y="130" width="80" height="200" rx="4" fill="url(#stripes1)" stroke="#ddd"/>
+  <text x="300" y="600" font-family="system-ui" font-size="24" fill="#444" text-anchor="middle">Garden District Stripe</text>
+  <text x="300" y="640" font-family="system-ui" font-size="16" fill="#666" text-anchor="middle">Front View</text>
+</svg>

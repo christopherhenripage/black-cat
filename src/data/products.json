@@ -1,0 +1,371 @@
+[
+  {
+    "id": "1",
+    "name": "Penang, Purple",
+    "slug": "penang-purple",
+    "price": 20,
+    "type": "button-down",
+    "description": "A vibrant purple button-down from our Penang collection. Created in Bangkok with care, this shirt brings bold color to your wardrobe.",
+    "details": [
+      "Relaxed fit",
+      "Button-down collar",
+      "Handcrafted in Bangkok"
+    ],
+    "care": [
+      "Wash cold",
+      "Line dry always"
+    ],
+    "variants": [
+      { "size": "M", "available": true },
+      { "size": "L", "available": true }
+    ],
+    "images": [
+      { "src": "https://images.squarespace-cdn.com/content/v1/687293cf5ae647520c034c9e/e6191f5a-47e6-4b0d-99b9-f34a7bac41e5/PENANG%2C+PURPLE-3868.jpg", "alt": "Penang Purple front view" },
+      { "src": "https://images.squarespace-cdn.com/content/v1/687293cf5ae647520c034c9e/dc8c639f-38ed-4d46-91aa-1680a01d9fd8/PENANG%2C+PURPLE-3869.jpg", "alt": "Penang Purple detail view" }
+    ],
+    "featured": true
+  },
+  {
+    "id": "2",
+    "name": "Penang, Light Blue",
+    "slug": "penang-light-blue",
+    "price": 20,
+    "type": "button-down",
+    "description": "A crisp light blue button-down from our Penang collection. Perfect for warm New Orleans days.",
+    "details": [
+      "Relaxed fit",
+      "Button-down collar",
+      "Handcrafted in Bangkok"
+    ],
+    "care": [
+      "Wash cold",
+      "Line dry always"
+    ],
+    "variants": [
+      { "size": "M", "available": true },
+      { "size": "L", "available": true },
+      { "size": "XL", "available": true }
+    ],
+    "images": [
+      { "src": "https://images.squarespace-cdn.com/content/v1/687293cf5ae647520c034c9e/70ce3a20-0a8e-4bc4-8818-63cbd31947ed/PENANG+LIGHT+BLUE-3852.jpg", "alt": "Penang Light Blue front view" },
+      { "src": "https://images.squarespace-cdn.com/content/v1/687293cf5ae647520c034c9e/702a09e0-5a7d-4b15-9938-5fb1801c0c5d/PENANG+LIGHT+BLUE-3853.jpg", "alt": "Penang Light Blue detail view" }
+    ],
+    "featured": true
+  },
+  {
+    "id": "3",
+    "name": "Penang, Peach",
+    "slug": "penang-peach",
+    "price": 20,
+    "type": "button-down",
+    "description": "A soft peach button-down from our Penang collection. Brings warmth and style to any outfit.",
+    "details": [
+      "Relaxed fit",
+      "Button-down collar",
+      "Handcrafted in Bangkok"
+    ],
+    "care": [
+      "Wash cold",
+      "Line dry always"
+    ],
+    "variants": [
+      { "size": "M", "available": true },
+      { "size": "L", "available": true }
+    ],
+    "images": [
+      { "src": "https://images.squarespace-cdn.com/content/v1/687293cf5ae647520c034c9e/bf18272a-8896-4132-a057-6c1b1ee879ac/PENANG+PEACH-3854.jpg", "alt": "Penang Peach front view" },
+      { "src": "https://images.squarespace-cdn.com/content/v1/687293cf5ae647520c034c9e/afdc2ae6-f170-4b4a-96dc-8b2aedb17679/PENANG+PEACH-3855.jpg", "alt": "Penang Peach detail view" }
+    ],
+    "featured": true
+  },
+  {
+    "id": "4",
+    "name": "Borneo, Green",
+    "slug": "borneo-green",
+    "price": 20,
+    "type": "button-down",
+    "description": "A fresh green button-down from our Borneo collection. Nature-inspired color meets Bangkok craftsmanship.",
+    "details": [
+      "Relaxed fit",
+      "Button-down collar",
+      "Handcrafted in Bangkok"
+    ],
+    "care": [
+      "Wash cold",
+      "Line dry always"
+    ],
+    "variants": [
+      { "size": "M", "available": true },
+      { "size": "L", "available": true }
+    ],
+    "images": [
+      { "src": "https://images.squarespace-cdn.com/content/v1/687293cf5ae647520c034c9e/27da0022-f575-43b0-90ff-012c1f7d5398/BORNEO+GREEN-3842.jpg", "alt": "Borneo Green front view" },
+      { "src": "https://images.squarespace-cdn.com/content/v1/687293cf5ae647520c034c9e/40afa9cd-bd3d-4acd-8443-ca9a01cb8503/BORNEO+GREEN-3843.jpg", "alt": "Borneo Green detail view" }
+    ],
+    "featured": true
+  },
+  {
+    "id": "5",
+    "name": "Borneo, Pink",
+    "slug": "borneo-pink",
+    "price": 20,
+    "type": "button-down",
+    "description": "A striking pink button-down from our Borneo collection. Bold color for those who stand out.",
+    "details": [
+      "Relaxed fit",
+      "Button-down collar",
+      "Handcrafted in Bangkok"
+    ],
+    "care": [
+      "Wash cold",
+      "Line dry always"
+    ],
+    "variants": [
+      { "size": "M", "available": true },
+      { "size": "L", "available": true }
+    ],
+    "images": [
+      { "src": "https://images.squarespace-cdn.com/content/v1/687293cf5ae647520c034c9e/9f74bc04-6948-4024-b5e1-545ecd885cd3/BORNEO+PINK-3858.jpg", "alt": "Borneo Pink front view" }
+    ],
+    "featured": false
+  },
+  {
+    "id": "6",
+    "name": "Kampot, Blue",
+    "slug": "kampot-blue",
+    "price": 20,
+    "type": "button-down",
+    "description": "A classic blue button-down from our Kampot collection. Timeless style with Bangkok craftsmanship.",
+    "details": [
+      "Relaxed fit",
+      "Button-down collar",
+      "Handcrafted in Bangkok"
+    ],
+    "care": [
+      "Wash cold",
+      "Line dry always"
+    ],
+    "variants": [
+      { "size": "M", "available": true },
+      { "size": "L", "available": true }
+    ],
+    "images": [
+      { "src": "https://images.squarespace-cdn.com/content/v1/687293cf5ae647520c034c9e/d4ba2c74-2d62-46c5-8d95-3cc231f4cab0/KAMPOT%2C+BLUE-3862.jpg", "alt": "Kampot Blue front view" },
+      { "src": "https://images.squarespace-cdn.com/content/v1/687293cf5ae647520c034c9e/29405806-cbf5-4259-9037-1b69430a5c5e/KAMPOT%2C+BLUE-3863.jpg", "alt": "Kampot Blue detail view" }
+    ],
+    "featured": false
+  },
+  {
+    "id": "7",
+    "name": "Kampot, Red",
+    "slug": "kampot-red",
+    "price": 20,
+    "type": "button-down",
+    "description": "A bold red button-down from our Kampot collection. Make a statement with this eye-catching piece.",
+    "details": [
+      "Relaxed fit",
+      "Button-down collar",
+      "Handcrafted in Bangkok"
+    ],
+    "care": [
+      "Wash cold",
+      "Line dry always"
+    ],
+    "variants": [
+      { "size": "M", "available": true },
+      { "size": "L", "available": true },
+      { "size": "XL", "available": true }
+    ],
+    "images": [
+      { "src": "https://images.squarespace-cdn.com/content/v1/687293cf5ae647520c034c9e/b8c15fbf-c1cd-4eb1-a540-da58a51b45b7/KAMPOT%2C+RED-3864.jpg", "alt": "Kampot Red front view" },
+      { "src": "https://images.squarespace-cdn.com/content/v1/687293cf5ae647520c034c9e/8b80c13f-6253-4e22-ae48-4955fb48ea30/KAMPOT%2C+RED-3865.jpg", "alt": "Kampot Red detail view" }
+    ],
+    "featured": false
+  },
+  {
+    "id": "8",
+    "name": "Miami, Navy",
+    "slug": "miami-navy",
+    "price": 20,
+    "type": "button-down",
+    "description": "A sophisticated navy button-down from our Miami collection. Deep color for any occasion.",
+    "details": [
+      "Relaxed fit",
+      "Button-down collar",
+      "Handcrafted in Bangkok"
+    ],
+    "care": [
+      "Wash cold",
+      "Line dry always"
+    ],
+    "variants": [
+      { "size": "M", "available": true },
+      { "size": "L", "available": true },
+      { "size": "XL", "available": true }
+    ],
+    "images": [
+      { "src": "https://images.squarespace-cdn.com/content/v1/687293cf5ae647520c034c9e/d008a621-c15b-44b4-9d75-d49bc703b3f4/MIAMI+NAVY-3846.jpg", "alt": "Miami Navy front view" },
+      { "src": "https://images.squarespace-cdn.com/content/v1/687293cf5ae647520c034c9e/a5cc9568-442b-457b-8954-161e14cdc689/MIAMI+NAVY-3847.jpg", "alt": "Miami Navy detail view" }
+    ],
+    "featured": false
+  },
+  {
+    "id": "9",
+    "name": "Suba, Blue",
+    "slug": "suba-blue",
+    "price": 20,
+    "type": "button-down",
+    "description": "A versatile blue button-down from our Suba collection. Easy style for everyday wear.",
+    "details": [
+      "Relaxed fit",
+      "Button-down collar",
+      "Handcrafted in Bangkok"
+    ],
+    "care": [
+      "Wash cold",
+      "Line dry always"
+    ],
+    "variants": [
+      { "size": "M", "available": true },
+      { "size": "L", "available": true }
+    ],
+    "images": [
+      { "src": "https://images.squarespace-cdn.com/content/v1/687293cf5ae647520c034c9e/0437e53b-ac3d-4eba-98c0-28e1570453ff/SUBA%2C+BLUE-3866.jpg", "alt": "Suba Blue front view" },
+      { "src": "https://images.squarespace-cdn.com/content/v1/687293cf5ae647520c034c9e/9a475036-84b4-4414-99d6-ae0960e9ecfd/SUBA%2C+BLUE-3867.jpg", "alt": "Suba Blue detail view" }
+    ],
+    "featured": false
+  },
+  {
+    "id": "10",
+    "name": "Palawan, Yellow",
+    "slug": "palawan-yellow",
+    "price": 20,
+    "type": "button-down",
+    "description": "A sunny yellow button-down from our Palawan collection. Bright and cheerful for any day.",
+    "details": [
+      "Relaxed fit",
+      "Button-down collar",
+      "Handcrafted in Bangkok"
+    ],
+    "care": [
+      "Wash cold",
+      "Line dry always"
+    ],
+    "variants": [
+      { "size": "M", "available": true },
+      { "size": "L", "available": true },
+      { "size": "XL", "available": true }
+    ],
+    "images": [
+      { "src": "https://images.squarespace-cdn.com/content/v1/687293cf5ae647520c034c9e/e45e18c8-fd27-4f11-83c9-a4d4d6428cc4/PALAWAN+YELLOW-3840.jpg", "alt": "Palawan Yellow front view" },
+      { "src": "https://images.squarespace-cdn.com/content/v1/687293cf5ae647520c034c9e/15d48b6b-c0bd-4817-aea1-beecc88d39f4/PALAWAN+YELLOW-3841.jpg", "alt": "Palawan Yellow detail view" }
+    ],
+    "featured": false
+  },
+  {
+    "id": "11",
+    "name": "Palawan, Navy",
+    "slug": "palawan-navy",
+    "price": 20,
+    "type": "button-down",
+    "description": "A deep navy button-down from our Palawan collection. Classic color, Bangkok quality.",
+    "details": [
+      "Relaxed fit",
+      "Button-down collar",
+      "Handcrafted in Bangkok"
+    ],
+    "care": [
+      "Wash cold",
+      "Line dry always"
+    ],
+    "variants": [
+      { "size": "M", "available": true },
+      { "size": "L", "available": true }
+    ],
+    "images": [
+      { "src": "https://images.squarespace-cdn.com/content/v1/687293cf5ae647520c034c9e/07cf5076-cd95-4236-be44-43acdb2c2089/PALAWAN+NAVY-3838.jpg", "alt": "Palawan Navy front view" },
+      { "src": "https://images.squarespace-cdn.com/content/v1/687293cf5ae647520c034c9e/75f5718f-4c29-491b-88f8-b52454f627f3/PALAWAN+NAVY-3839.jpg", "alt": "Palawan Navy detail view" }
+    ],
+    "featured": false
+  },
+  {
+    "id": "12",
+    "name": "Bangkok, Black",
+    "slug": "bangkok-black",
+    "price": 20,
+    "type": "button-down",
+    "description": "A sleek black button-down from our Bangkok collection. The signature color of the Black Cat.",
+    "details": [
+      "Relaxed fit",
+      "Button-down collar",
+      "Handcrafted in Bangkok"
+    ],
+    "care": [
+      "Wash cold",
+      "Line dry always"
+    ],
+    "variants": [
+      { "size": "M", "available": true },
+      { "size": "L", "available": true },
+      { "size": "XL", "available": true }
+    ],
+    "images": [
+      { "src": "https://images.squarespace-cdn.com/content/v1/687293cf5ae647520c034c9e/bfd2af5a-6c35-43df-b22b-f15e6c18bbc3/BANGKOK+BLACK-3844-2.jpg", "alt": "Bangkok Black front view" },
+      { "src": "https://images.squarespace-cdn.com/content/v1/687293cf5ae647520c034c9e/83e6ef1a-51c3-4b2f-bf88-78298a105aac/BANGKOK+BLACK-3845.jpg", "alt": "Bangkok Black detail view" }
+    ],
+    "featured": false
+  },
+  {
+    "id": "13",
+    "name": "Bangkok, Tan",
+    "slug": "bangkok-tan",
+    "price": 20,
+    "type": "button-down",
+    "description": "A warm tan button-down from our Bangkok collection. Named after the city where it's crafted.",
+    "details": [
+      "Relaxed fit",
+      "Button-down collar",
+      "Handcrafted in Bangkok"
+    ],
+    "care": [
+      "Wash cold",
+      "Line dry always"
+    ],
+    "variants": [
+      { "size": "M", "available": true },
+      { "size": "L", "available": true },
+      { "size": "XL", "available": true }
+    ],
+    "images": [
+      { "src": "https://images.squarespace-cdn.com/content/v1/687293cf5ae647520c034c9e/f7727fde-de24-43ae-ab19-3f2bd9a88fb8/BANGKOK+TAN-3850.jpg", "alt": "Bangkok Tan front view" },
+      { "src": "https://images.squarespace-cdn.com/content/v1/687293cf5ae647520c034c9e/a7bb5b07-9c12-4d68-87a6-4b783addc601/BANGKOK+TAN-3851.jpg", "alt": "Bangkok Tan detail view" }
+    ],
+    "featured": false
+  },
+  {
+    "id": "14",
+    "name": "Lanai, Blue",
+    "slug": "lanai-blue",
+    "price": 20,
+    "type": "button-down",
+    "description": "A serene blue button-down from our Lanai collection. Island vibes meet Bangkok craftsmanship.",
+    "details": [
+      "Relaxed fit",
+      "Button-down collar",
+      "Handcrafted in Bangkok"
+    ],
+    "care": [
+      "Wash cold",
+      "Line dry always"
+    ],
+    "variants": [
+      { "size": "M", "available": true },
+      { "size": "L", "available": true },
+      { "size": "XL", "available": true }
+    ],
+    "images": [
+      { "src": "https://images.squarespace-cdn.com/content/v1/687293cf5ae647520c034c9e/37d0f5bc-0d5d-420e-9a18-43ae30ca8f25/LANAI+BLUE-3837.jpg", "alt": "Lanai Blue front view" }
+    ],
+    "featured": false
+  }
+]
