@@ -7,99 +7,116 @@ export const metadata: Metadata = {
 };
 
 async function getMetrics() {
-  const now = new Date();
-  const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+  try {
+    const now = new Date();
+    const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
 
-  // Total inventory
-  const inventoryStats = await prisma.variant.aggregate({
-    _sum: {
-      quantityOnHand: true,
-      quantityReserved: true,
-      quantitySold: true,
-    },
-  });
+    // Total inventory
+    const inventoryStats = await prisma.variant.aggregate({
+      _sum: {
+        quantityOnHand: true,
+        quantityReserved: true,
+        quantitySold: true,
+      },
+    });
 
-  // Sales in last 30 days
-  const recentSales = await prisma.saleItem.aggregate({
-    where: {
-      createdAt: { gte: thirtyDaysAgo },
-    },
-    _sum: {
-      quantity: true,
-    },
-  });
+    // Sales in last 30 days
+    const recentSales = await prisma.saleItem.aggregate({
+      where: {
+        createdAt: { gte: thirtyDaysAgo },
+      },
+      _sum: {
+        quantity: true,
+      },
+    });
 
-  // All time sales
-  const allTimeSales = await prisma.saleItem.aggregate({
-    _sum: {
-      quantity: true,
-    },
-  });
+    // All time sales
+    const allTimeSales = await prisma.saleItem.aggregate({
+      _sum: {
+        quantity: true,
+      },
+    });
 
-  // Top 5 products by units sold
-  const topProducts = await prisma.variant.findMany({
-    where: {
-      quantitySold: { gt: 0 },
-    },
-    include: {
-      product: true,
-    },
-    orderBy: {
-      quantitySold: "desc",
-    },
-    take: 5,
-  });
+    // Top 5 products by units sold
+    const topProducts = await prisma.variant.findMany({
+      where: {
+        quantitySold: { gt: 0 },
+      },
+      include: {
+        product: true,
+      },
+      orderBy: {
+        quantitySold: "desc",
+      },
+      take: 5,
+    });
 
-  // Oldest inventory (items in stock longest)
-  const oldestInventoryRaw = await prisma.variant.findMany({
-    where: {
-      quantityOnHand: { gt: 0 },
-    },
-    include: {
-      product: true,
-    },
-    orderBy: {
-      createdAt: "asc",
-    },
-    take: 5,
-  });
+    // Oldest inventory (items in stock longest)
+    const oldestInventoryRaw = await prisma.variant.findMany({
+      where: {
+        quantityOnHand: { gt: 0 },
+      },
+      include: {
+        product: true,
+      },
+      orderBy: {
+        createdAt: "asc",
+      },
+      take: 5,
+    });
 
-  // Calculate age in days on the server
-  const oldestInventory = oldestInventoryRaw.map((variant) => ({
-    ...variant,
-    ageDays: Math.floor(
-      (now.getTime() - new Date(variant.createdAt).getTime()) / (1000 * 60 * 60 * 24)
-    ),
-  }));
+    // Calculate age in days on the server
+    const oldestInventory = oldestInventoryRaw.map((variant) => ({
+      ...variant,
+      ageDays: Math.floor(
+        (now.getTime() - new Date(variant.createdAt).getTime()) / (1000 * 60 * 60 * 24)
+      ),
+    }));
 
-  // Recent order requests
-  const newRequests = await prisma.orderRequest.count({
-    where: {
-      status: "NEW",
-    },
-  });
+    // Recent order requests
+    const newRequests = await prisma.orderRequest.count({
+      where: {
+        status: "NEW",
+      },
+    });
 
-  const totalOnHand = inventoryStats._sum.quantityOnHand || 0;
-  const totalReserved = inventoryStats._sum.quantityReserved || 0;
-  const totalSold = inventoryStats._sum.quantitySold || 0;
-  const soldLast30Days = recentSales._sum.quantity || 0;
-  const soldAllTime = allTimeSales._sum.quantity || 0;
-  const sellThrough =
-    totalSold + totalOnHand > 0
-      ? Math.round((totalSold / (totalSold + totalOnHand)) * 100)
-      : 0;
+    const totalOnHand = inventoryStats._sum.quantityOnHand || 0;
+    const totalReserved = inventoryStats._sum.quantityReserved || 0;
+    const totalSold = inventoryStats._sum.quantitySold || 0;
+    const soldLast30Days = recentSales._sum.quantity || 0;
+    const soldAllTime = allTimeSales._sum.quantity || 0;
+    const sellThrough =
+      totalSold + totalOnHand > 0
+        ? Math.round((totalSold / (totalSold + totalOnHand)) * 100)
+        : 0;
 
-  return {
-    totalOnHand,
-    totalReserved,
-    totalSold,
-    soldLast30Days,
-    soldAllTime,
-    sellThrough,
-    topProducts,
-    oldestInventory,
-    newRequests,
-  };
+    return {
+      totalOnHand,
+      totalReserved,
+      totalSold,
+      soldLast30Days,
+      soldAllTime,
+      sellThrough,
+      topProducts,
+      oldestInventory,
+      newRequests,
+      error: null,
+    };
+  } catch (error) {
+    console.error("Database error:", error);
+    return {
+      totalOnHand: 0,
+      totalReserved: 0,
+      totalSold: 0,
+      soldLast30Days: 0,
+      soldAllTime: 0,
+      sellThrough: 0,
+      topProducts: [],
+      oldestInventory: [],
+      newRequests: 0,
+      error: "Database not configured. SQLite does not persist on serverless platforms.",
+    };
+  }
 }
 
 export default async function AdminDashboard() {
@@ -118,6 +135,16 @@ export default async function AdminDashboard() {
           </Link>
         )}
       </div>
+
+      {metrics.error && (
+        <div className="bg-red-50 border border-red-200 p-4 text-red-800">
+          <h3 className="font-semibold mb-2">Database Error</h3>
+          <p className="text-sm">{metrics.error}</p>
+          <p className="text-sm mt-2">
+            To use the admin dashboard, configure a PostgreSQL database (e.g., Vercel Postgres, Neon, or PlanetScale) and update your DATABASE_URL environment variable.
+          </p>
+        </div>
+      )}
 
       {/* Key Metrics */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

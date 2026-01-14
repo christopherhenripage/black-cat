@@ -22,10 +22,14 @@ function signToken(token: string): string {
 }
 
 function verifyToken(signedToken: string): string | null {
-  const parts = signedToken.split(".");
-  if (parts.length !== 2) return null;
+  // Token format: randomBytes.expiresAt.signature
+  // Find the last dot to split token from signature
+  const lastDotIndex = signedToken.lastIndexOf(".");
+  if (lastDotIndex === -1) return null;
 
-  const [token, signature] = parts;
+  const token = signedToken.substring(0, lastDotIndex);
+  const signature = signedToken.substring(lastDotIndex + 1);
+
   const secret = getSessionSecret();
   const hmac = crypto.createHmac("sha256", secret);
   hmac.update(token);
