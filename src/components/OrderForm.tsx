@@ -29,38 +29,86 @@ interface FormData {
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
-function SuccessCheckmark() {
+function SuccessCat() {
   const reducedMotion = useReducedMotion();
+  const [showSparkles, setShowSparkles] = useState(true);
+
+  useEffect(() => {
+    if (reducedMotion) return;
+    const timer = setTimeout(() => setShowSparkles(false), 2000);
+    return () => clearTimeout(timer);
+  }, [reducedMotion]);
 
   return (
-    <svg
-      className="w-16 h-16 mx-auto mb-4"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <circle
-        cx="12"
-        cy="12"
-        r="10"
-        stroke="currentColor"
-        strokeWidth="2"
-        className="text-green-500"
-      />
-      <path
-        d="M7 12l3 3 7-7"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="text-green-500"
+    <div className="relative mx-auto mb-4 w-24 h-24">
+      {/* Sparkles around the cat */}
+      {showSparkles && !reducedMotion && (
+        <>
+          <div className="absolute -top-2 left-1/2 -translate-x-1/2 text-yellow-400 animate-ping">✨</div>
+          <div className="absolute top-4 -left-4 text-pink-400 animate-ping" style={{ animationDelay: "0.2s" }}>✨</div>
+          <div className="absolute top-4 -right-4 text-green-400 animate-ping" style={{ animationDelay: "0.4s" }}>✨</div>
+        </>
+      )}
+
+      {/* Happy cat SVG */}
+      <svg
+        viewBox="0 0 100 100"
+        className="w-full h-full"
         style={{
-          strokeDasharray: 24,
-          strokeDashoffset: reducedMotion ? 0 : 24,
-          animation: reducedMotion ? "none" : "checkmark 0.4s ease-out 0.2s forwards",
+          animation: reducedMotion ? "none" : "successBounce 0.6s ease-out",
         }}
-      />
-    </svg>
+        aria-hidden="true"
+      >
+        {/* Cat body */}
+        <ellipse cx="50" cy="65" rx="25" ry="22" fill="#1f2937" />
+
+        {/* Cat head */}
+        <ellipse cx="50" cy="40" rx="28" ry="24" fill="#1f2937" />
+
+        {/* Ears */}
+        <path d="M25 30 L30 10 L42 28 Z" fill="#1f2937" />
+        <path d="M58 28 L70 10 L75 30 Z" fill="#1f2937" />
+        <path d="M28 28 L32 15 L40 27 Z" fill="#ff6b9d" />
+        <path d="M60 27 L68 15 L72 28 Z" fill="#ff6b9d" />
+
+        {/* Happy closed eyes (^_^) */}
+        <path d="M35 38 Q40 33, 45 38" stroke="#22c55e" strokeWidth="3" fill="none" strokeLinecap="round" />
+        <path d="M55 38 Q60 33, 65 38" stroke="#22c55e" strokeWidth="3" fill="none" strokeLinecap="round" />
+
+        {/* Blush marks */}
+        <ellipse cx="32" cy="45" rx="5" ry="3" fill="#ff6b9d" opacity="0.5" />
+        <ellipse cx="68" cy="45" rx="5" ry="3" fill="#ff6b9d" opacity="0.5" />
+
+        {/* Happy smile */}
+        <path d="M42 52 Q50 60, 58 52" stroke="#ff6b9d" strokeWidth="2" fill="none" strokeLinecap="round" />
+
+        {/* Nose */}
+        <path d="M50 48 L47 52 L53 52 Z" fill="#ff6b9d" />
+
+        {/* Tail wagging */}
+        <path
+          d="M75 65 Q90 55, 88 40 Q86 30, 82 35"
+          stroke="#1f2937"
+          strokeWidth="8"
+          fill="none"
+          strokeLinecap="round"
+          style={{
+            transformOrigin: "75px 65px",
+            animation: reducedMotion ? "none" : "tailWag 0.3s ease-in-out infinite alternate",
+          }}
+        />
+
+        {/* Paws raised in celebration */}
+        <ellipse cx="30" cy="72" rx="8" ry="6" fill="#1f2937" />
+        <ellipse cx="70" cy="72" rx="8" ry="6" fill="#1f2937" />
+
+        {/* Paw pads */}
+        <circle cx="28" cy="71" r="2" fill="#ff6b9d" />
+        <circle cx="32" cy="71" r="2" fill="#ff6b9d" />
+        <circle cx="68" cy="71" r="2" fill="#ff6b9d" />
+        <circle cx="72" cy="71" r="2" fill="#ff6b9d" />
+      </svg>
+    </div>
   );
 }
 
@@ -171,7 +219,7 @@ export function OrderForm({
   if (status === "success") {
     return (
       <div className="bg-green-50 border border-green-200 p-8 text-center animate-fade-in">
-        <SuccessCheckmark />
+        <SuccessCat />
         <h3 className="text-xl font-medium text-green-800 mb-2">
           We&apos;ve got it. Talk soon.
         </h3>

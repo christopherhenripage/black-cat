@@ -18,8 +18,8 @@ export default function Home() {
       <TimeGreeting className="bg-gray-50 border-b border-gray-100" />
 
       {/* Hero Section */}
-      <section className="relative min-h-[80vh] flex items-center justify-center bg-black text-white overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/80 z-10" />
+      <section className="relative min-h-[80vh] flex items-center justify-center bg-gradient-to-br from-purple-900 via-fuchsia-800 to-orange-700 text-white overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-purple-900/30 to-fuchsia-900/50 z-10" />
         <div className="absolute inset-0">
           <Image
             src="/images/midnight-classic-1.svg"

@@ -122,6 +122,68 @@ button {
   }
 }
 
+@keyframes catWalk {
+  from {
+    left: -100px;
+  }
+  to {
+    left: calc(100% + 100px);
+  }
+}
+
+@keyframes tailWag {
+  0% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(10deg);
+  }
+}
+
+@keyframes pawFade {
+  0% {
+    opacity: 0.4;
+    transform: translate(-50%, -50%) rotate(var(--rotation, 0deg)) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(var(--rotation, 0deg)) scale(0.8);
+  }
+}
+
+@keyframes journeyLoop {
+  0% {
+    stroke-dashoffset: 600;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  51% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 600;
+  }
+}
+
+@keyframes catBlink {
+  0%, 45%, 55%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.1);
+  }
+}
+
+@keyframes successBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
 @keyframes checkmark {
   0% {
     stroke-dashoffset: 24;

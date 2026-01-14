@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface BlackCatLogoProps {
   className?: string;
@@ -29,6 +29,18 @@ export function BlackCatLogo({
     white: "text-white",
     accent: "text-accent",
   };
+
+  // Automatic periodic blinking
+  useEffect(() => {
+    if (!animated) return;
+
+    const blinkInterval = setInterval(() => {
+      setIsBlinking(true);
+      setTimeout(() => setIsBlinking(false), 150);
+    }, 4000); // Blink every 4 seconds
+
+    return () => clearInterval(blinkInterval);
+  }, [animated]);
 
   const handleMouseEnter = () => {
     if (animated) {
