@@ -5,6 +5,8 @@ import Link from "next/link";
 import { ProductEditForm } from "@/components/admin/ProductEditForm";
 import { VariantManager } from "@/components/admin/VariantManager";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Edit Product",
 };

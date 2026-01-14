@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import prisma from "@/lib/db";
 import { InventoryTable } from "@/components/admin/InventoryTable";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Inventory",
 };

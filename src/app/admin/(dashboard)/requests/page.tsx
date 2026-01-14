@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import prisma from "@/lib/db";
 import { RequestStatusUpdater } from "@/components/admin/RequestStatusUpdater";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Order Requests",
 };

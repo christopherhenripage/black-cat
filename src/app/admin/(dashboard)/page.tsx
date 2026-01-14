@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import prisma from "@/lib/db";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Dashboard",
 };
@@ -104,6 +106,7 @@ async function getMetrics() {
     };
   } catch (error) {
     console.error("Database error:", error);
+    const errorMessage = error instanceof Error ? error.message : "Unknown error";
     return {
       totalOnHand: 0,
       totalReserved: 0,
@@ -114,7 +117,7 @@ async function getMetrics() {
       topProducts: [],
       oldestInventory: [],
       newRequests: 0,
-      error: "Database not configured. SQLite does not persist on serverless platforms.",
+      error: `Database error: ${errorMessage}`,
     };
   }
 }

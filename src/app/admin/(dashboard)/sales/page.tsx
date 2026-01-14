@@ -3,6 +3,8 @@ import prisma from "@/lib/db";
 import Link from "next/link";
 import { SaleForm } from "@/components/admin/SaleForm";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Sales",
 };
