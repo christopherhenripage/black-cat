@@ -50,8 +50,8 @@ export default function AboutPage() {
                   anywhere you do.
                 </p>
                 <p>
-                  Each one is made by Mr. Nong in Bangkok, Thailand—where
-                  quality cotton and careful attention to detail come together.
+                  Each one comes from Bangkok, Thailand—quality cotton
+                  and careful attention to detail, every time.
                 </p>
               </div>
             </div>

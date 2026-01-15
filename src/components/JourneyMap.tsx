@@ -4,11 +4,11 @@ import { useState, useEffect, useRef } from "react";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 const journeySteps = [
-  { id: 1, label: "Made by Mr. Nong", description: "Handmade with care in Bangkok", position: 0 },
-  { id: 2, label: "Quality Fabrics", description: "Soft cotton, carefully selected", position: 25 },
-  { id: 3, label: "Packed with Care", description: "Wrapped and ready for the journey", position: 50 },
-  { id: 4, label: "Across the Ocean", description: "From Thailand to Louisiana", position: 75 },
-  { id: 5, label: "Arrives in NOLA", description: "Ready for New Orleans style", position: 100 },
+  { id: 1, label: "Found in Bangkok", description: "Super soft cotton shirts", position: 0 },
+  { id: 2, label: "Hand Selected", description: "Each one chosen for quality", position: 25 },
+  { id: 3, label: "Packed with Care", description: "Ready for the journey", position: 50 },
+  { id: 4, label: "Across the Ocean", description: "Thailand to Louisiana", position: 75 },
+  { id: 5, label: "Arrives in NOLA", description: "Ready for New Orleans", position: 100 },
 ];
 
 export function JourneyMap() {
@@ -154,55 +154,40 @@ export function JourneyMap() {
             strokeWidth="2"
           />
 
-          {/* Thailand silhouette (LEFT side) - accurate country shape */}
-          <g transform="translate(20, 100) scale(0.85)">
-            {/* Thailand - axe/elephant head shape with Malay Peninsula */}
+          {/* Thailand silhouette (LEFT side) */}
+          <g transform="translate(50, 105)">
+            {/* Thailand - recognizable shape: wide north, narrow middle, long southern peninsula */}
             <path
-              d="M70 15
-                 C50 15, 35 25, 30 40
-                 C25 55, 30 70, 40 80
-                 C35 90, 30 100, 35 110
-                 C40 115, 50 115, 55 120
-                 C50 130, 45 145, 50 160
-                 C52 170, 48 180, 50 190
-                 C52 200, 48 210, 50 220
-                 C52 230, 50 240, 55 250
-                 C58 255, 62 255, 65 250
-                 C68 245, 72 250, 75 245
-                 C78 235, 75 225, 80 215
-                 C85 200, 80 185, 85 170
-                 C90 155, 85 140, 95 125
-                 C105 110, 115 100, 120 85
-                 C125 70, 130 55, 125 40
-                 C120 25, 105 15, 90 15
-                 C80 15, 75 15, 70 15 Z"
-              fill="rgba(251, 146, 60, 0.6)"
-              stroke="rgba(251, 191, 36, 0.9)"
-              strokeWidth="2.5"
+              d="M40 0
+                 L70 5 L85 0 L95 10 L90 25 L95 40 L85 50
+                 L75 55 L65 50 L55 55 L50 70 L55 85
+                 L50 100 L45 115 L50 130 L48 145 L52 160
+                 L48 175 L52 185 L55 175 L60 185 L58 170
+                 L62 155 L58 140 L62 125 L55 110 L60 95
+                 L55 80 L60 65 L50 55 L40 60 L30 50
+                 L25 35 L30 20 L25 10 L40 0 Z"
+              fill="rgba(251, 146, 60, 0.55)"
+              stroke="rgba(251, 191, 36, 0.85)"
+              strokeWidth="2"
             />
-            {/* Bangkok dot */}
-            <circle cx="75" cy="95" r="8" fill="#fbbf24" stroke="#f59e0b" strokeWidth="2" />
           </g>
 
-          {/* Louisiana boot shape (RIGHT side) - accurate state shape */}
-          <g transform="translate(600, 110) scale(1.1)">
-            {/* Louisiana - the iconic boot shape */}
+          {/* Louisiana boot shape (RIGHT side) */}
+          <g transform="translate(615, 115)">
+            {/* Louisiana - the boot: flat top, boot heel on left, toe pointing right */}
             <path
-              d="M15 10
-                 L120 10 L122 15 L125 10 L170 12 L172 18
-                 L170 35 L168 55 L170 75 L165 90
-                 L160 100 L150 108 L140 112 L130 115
-                 L125 125 L130 135 L140 142 L150 148
-                 L155 155 L150 162 L140 165 L125 163
-                 L110 168 L95 172 L80 170 L65 175
-                 L50 172 L40 165 L35 155 L30 140
-                 L25 120 L20 95 L18 70 L15 45 L15 10 Z"
-              fill="rgba(34, 197, 94, 0.6)"
-              stroke="rgba(74, 222, 128, 0.9)"
-              strokeWidth="2.5"
+              d="M0 0
+                 L130 0 L135 5 L140 0 L160 2
+                 L158 20 L160 40 L155 60 L158 75
+                 L150 85 L140 90 L125 88 L115 95
+                 L120 105 L135 115 L145 125 L140 135
+                 L125 140 L105 138 L85 145 L65 150
+                 L45 145 L30 135 L20 120 L15 100
+                 L10 75 L5 50 L0 25 L0 0 Z"
+              fill="rgba(34, 197, 94, 0.55)"
+              stroke="rgba(74, 222, 128, 0.85)"
+              strokeWidth="2"
             />
-            {/* New Orleans dot - southeast, near the toe */}
-            <circle cx="130" cy="150" r="8" fill="#22c55e" stroke="#16a34a" strokeWidth="2" />
           </g>
 
           {/* Flight path - dotted background */}

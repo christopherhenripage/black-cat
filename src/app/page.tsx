@@ -83,7 +83,7 @@ export default function Home() {
           <RevealSection className="text-center mb-12">
             <p className="text-meta text-accent mb-3">The Journey</p>
             <h2 className="text-section-title text-white mb-4">
-              From Mr. Nong in Bangkok to New Orleans streets
+              From Bangkok to New Orleans
             </h2>
           </RevealSection>
           <RevealSection>
@@ -106,9 +106,8 @@ export default function Home() {
                 anywhere you do.
               </p>
               <p>
-                Made by Mr. Nong in Bangkok. Sold in New Orleans. Each one
-                crafted with quality cotton and careful attention to how it feels
-                and how it wears.
+                Found in Bangkok. Sold in New Orleans. Super soft cotton,
+                bold prints, and careful attention to how it feels and wears.
               </p>
             </div>
             <div className="mt-8">
