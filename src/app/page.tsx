@@ -30,7 +30,7 @@ export default function Home() {
         <div className="relative z-20 text-center px-4 max-w-3xl mx-auto">
           {/* Black Cat Logo */}
           <div className="flex justify-center mb-8">
-            <BlackCatLogo size="xl" color="black" animated />
+            <BlackCatLogo size="hero" color="black" animated glowOnDark />
           </div>
           <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tight mb-6">
             Black Cat

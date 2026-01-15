@@ -4,16 +4,18 @@ import { useState, useEffect } from "react";
 
 interface BlackCatLogoProps {
   className?: string;
-  size?: "sm" | "md" | "lg" | "xl";
+  size?: "sm" | "md" | "lg" | "xl" | "2xl" | "hero";
   animated?: boolean;
   color?: "black" | "white" | "accent";
+  glowOnDark?: boolean;
 }
 
 export function BlackCatLogo({
   className = "",
   size = "md",
   animated = true,
-  color = "black"
+  color = "black",
+  glowOnDark = false
 }: BlackCatLogoProps) {
   const [isBlinking, setIsBlinking] = useState(false);
 
@@ -22,6 +24,8 @@ export function BlackCatLogo({
     md: "w-10 h-10",
     lg: "w-16 h-16",
     xl: "w-24 h-24",
+    "2xl": "w-32 h-32",
+    hero: "w-48 h-48",
   };
 
   const colorClasses = {
@@ -60,10 +64,37 @@ export function BlackCatLogo({
         className="w-full h-full"
         aria-hidden="true"
       >
+        {glowOnDark && (
+          <defs>
+            <filter id="catGlow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="2" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+        )}
+
+        {/* Outline/glow for visibility on dark backgrounds */}
+        {glowOnDark && (
+          <g stroke="rgba(255,255,255,0.3)" strokeWidth="3" fill="none">
+            <path d="M25 35 L35 15 L45 35 Z" />
+            <path d="M55 35 L65 15 L75 35 Z" />
+            <ellipse cx="50" cy="45" rx="28" ry="24" />
+            <ellipse cx="50" cy="75" rx="22" ry="20" />
+            <path d="M72 75 Q 90 70, 92 50 Q 94 35, 85 30" strokeWidth="10" strokeLinecap="round" />
+          </g>
+        )}
+
         {/* Cat sitting silhouette */}
         {/* Ears */}
         <path d="M25 35 L35 15 L45 35 Z" />
         <path d="M55 35 L65 15 L75 35 Z" />
+
+        {/* Inner ear pink */}
+        <path d="M30 33 L35 20 L40 33 Z" fill="#ff6b9d" />
+        <path d="M60 33 L65 20 L70 33 Z" fill="#ff6b9d" />
 
         {/* Head */}
         <ellipse cx="50" cy="45" rx="28" ry="24" />
@@ -104,7 +135,7 @@ export function BlackCatLogo({
         <path d="M50 50 L47 54 L53 54 Z" fill="#ff6b9d" />
 
         {/* Whiskers */}
-        <g stroke="white" strokeWidth="1" strokeLinecap="round">
+        <g stroke="rgba(255,255,255,0.6)" strokeWidth="1.5" strokeLinecap="round">
           <line x1="25" y1="48" x2="38" y2="50" />
           <line x1="25" y1="52" x2="38" y2="52" />
           <line x1="25" y1="56" x2="38" y2="54" />
