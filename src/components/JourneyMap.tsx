@@ -154,43 +154,78 @@ export function JourneyMap() {
             strokeWidth="2"
           />
 
-          {/* Thailand landmass (LEFT side) */}
-          <g>
+          {/* Thailand silhouette (LEFT side) */}
+          <g transform="translate(40, 90) scale(0.45)">
+            {/* Thailand country shape */}
             <path
-              d="M20 120 Q60 100, 100 110 Q140 120, 170 150 Q190 180, 180 210 Q170 240, 130 250 Q90 260, 50 240 Q20 220, 20 180 Q20 150, 20 120"
-              fill="rgba(251, 146, 60, 0.2)"
-              stroke="rgba(251, 146, 60, 0.5)"
-              strokeWidth="2"
+              d="M80 20
+                 C100 15, 130 10, 160 15
+                 C190 20, 210 35, 220 60
+                 C230 85, 225 110, 210 135
+                 C195 160, 175 180, 165 210
+                 C155 240, 160 270, 155 300
+                 C150 330, 140 350, 130 380
+                 C120 410, 125 440, 120 470
+                 C115 500, 100 520, 95 540
+                 C90 560, 95 575, 105 580
+                 C115 585, 130 575, 140 560
+                 C150 545, 160 520, 175 495
+                 C190 470, 210 450, 220 420
+                 C230 390, 225 360, 215 330
+                 C205 300, 190 275, 180 245
+                 C170 215, 175 185, 190 155
+                 C205 125, 230 100, 250 75
+                 C270 50, 280 25, 270 10
+                 C260 -5, 240 5, 210 10
+                 C180 15, 150 10, 120 15
+                 C90 20, 70 25, 80 20
+                 Z"
+              fill="rgba(251, 146, 60, 0.35)"
+              stroke="rgba(251, 146, 60, 0.6)"
+              strokeWidth="3"
             />
-            {/* Thai temple silhouette */}
-            <g transform="translate(100, 155)">
-              <path
-                d="M0 30 L-20 30 L-15 20 L-25 20 L-20 10 L-30 10 L0 -25 L30 10 L20 10 L25 20 L15 20 L20 30 L0 30"
-                fill="#fbbf24"
-                stroke="#f59e0b"
-                strokeWidth="1"
-              />
-            </g>
+            {/* Bangkok location dot */}
+            <circle cx="190" cy="140" r="12" fill="#fbbf24" stroke="#f59e0b" strokeWidth="2" />
           </g>
 
-          {/* USA/Louisiana landmass (RIGHT side) */}
-          <g>
+          {/* Louisiana boot shape (RIGHT side) */}
+          <g transform="translate(600, 100) scale(1.1)">
+            {/* Louisiana state outline - the boot */}
             <path
-              d="M620 140 Q660 120, 700 130 Q740 140, 760 160 Q780 180, 780 200 Q780 220, 760 240 Q740 260, 700 260 Q660 260, 630 240 Q600 220, 600 180 Q600 160, 620 140"
-              fill="rgba(34, 197, 94, 0.2)"
-              stroke="rgba(34, 197, 94, 0.5)"
-              strokeWidth="2"
+              d="M20 20
+                 L80 15
+                 L120 20
+                 L140 25
+                 L150 35
+                 L148 50
+                 L140 65
+                 L130 85
+                 L125 100
+                 L130 115
+                 L140 125
+                 L150 135
+                 L155 145
+                 L150 155
+                 L138 158
+                 L120 155
+                 L100 160
+                 L80 170
+                 L60 175
+                 L45 170
+                 L35 158
+                 L30 142
+                 L25 120
+                 L22 95
+                 L20 70
+                 L18 45
+                 L20 20
+                 Z"
+              fill="rgba(34, 197, 94, 0.35)"
+              stroke="rgba(34, 197, 94, 0.6)"
+              strokeWidth="3"
             />
-            {/* Fleur-de-lis for New Orleans */}
-            <g transform="translate(680, 175) scale(0.5)">
-              <path
-                d="M0 -30 Q-5 -20, -15 -10 Q-25 0, -20 10 Q-15 20, 0 15 Q15 20, 20 10 Q25 0, 15 -10 Q5 -20, 0 -30"
-                fill="#c9a227"
-                stroke="#a88620"
-                strokeWidth="2"
-              />
-              <rect x="-3" y="10" width="6" height="25" fill="#c9a227" />
-            </g>
+            {/* New Orleans location dot - southeast Louisiana */}
+            <circle cx="115" cy="145" r="10" fill="#22c55e" stroke="#16a34a" strokeWidth="2" />
           </g>
 
           {/* Flight path - dotted background */}
