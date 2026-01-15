@@ -153,12 +153,15 @@ button {
 
 @keyframes pawFade {
   0% {
-    opacity: 0.4;
+    opacity: 0.5;
     transform: translate(-50%, -50%) rotate(var(--rotation, 0deg)) scale(1);
+  }
+  50% {
+    opacity: 0.35;
   }
   100% {
     opacity: 0;
-    transform: translate(-50%, -50%) rotate(var(--rotation, 0deg)) scale(0.8);
+    transform: translate(-50%, -50%) rotate(var(--rotation, 0deg)) scale(0.85);
   }
 }
 

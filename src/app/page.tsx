@@ -4,6 +4,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { TimeGreeting } from "@/components/TimeGreeting";
 import { RevealSection } from "@/components/RevealSection";
 import { BlackCatLogo } from "@/components/BlackCatLogo";
+import { OriginStory } from "@/components/OriginStory";
 import { getFeaturedProducts } from "@/lib/products";
 
 export default function Home() {
@@ -81,20 +82,8 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <RevealSection direction="left" className="lg:col-span-5">
-              <div className="relative aspect-[4/5] bg-black overflow-hidden flex items-center justify-center">
-                {/* Large cat illustration */}
-                <svg viewBox="0 0 200 200" className="w-2/3 h-2/3 text-accent">
-                  <path d="M50 70 L70 30 L90 70 Z" fill="currentColor" />
-                  <path d="M110 70 L130 30 L150 70 Z" fill="currentColor" />
-                  <ellipse cx="100" cy="90" rx="55" ry="45" fill="currentColor" />
-                  <ellipse cx="100" cy="150" rx="45" ry="40" fill="currentColor" />
-                  <path d="M145 150 Q180 140, 185 110 Q190 85, 175 75" stroke="currentColor" strokeWidth="16" fill="none" strokeLinecap="round" />
-                  <ellipse cx="80" cy="85" rx="10" ry="12" fill="#22c55e" />
-                  <ellipse cx="120" cy="85" rx="10" ry="12" fill="#22c55e" />
-                  <ellipse cx="80" cy="85" rx="5" ry="8" fill="black" />
-                  <ellipse cx="120" cy="85" rx="5" ry="8" fill="black" />
-                  <path d="M100 100 L94 110 L106 110 Z" fill="#ff6b9d" />
-                </svg>
+              <div className="relative aspect-[4/5] bg-black overflow-hidden flex items-center justify-center p-8">
+                <OriginStory className="w-full h-full" />
               </div>
             </RevealSection>
             <RevealSection direction="right" delay={200} className="lg:col-span-6 lg:col-start-7">

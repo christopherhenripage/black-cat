@@ -280,17 +280,17 @@ export function PawPrintTrail() {
         Math.pow(e.clientX - lastX, 2) + Math.pow(e.clientY - lastY, 2)
       );
 
-      // Only add print every 80px of movement
-      if (distance > 80) {
+      // Only add print every 60px of movement
+      if (distance > 60) {
         const angle = Math.atan2(e.clientY - lastY, e.clientX - lastX) * (180 / Math.PI);
 
         setPrints((prev) => [
-          ...prev.slice(-6), // Keep only last 6 prints
+          ...prev.slice(-10), // Keep only last 10 prints
           {
             id: printId++,
-            x: e.clientX + (isLeft ? -10 : 10),
+            x: e.clientX + (isLeft ? -15 : 15),
             y: e.clientY,
-            rotation: angle + (isLeft ? -20 : 20),
+            rotation: angle + (isLeft ? -25 : 25),
           },
         ]);
 
@@ -301,7 +301,7 @@ export function PawPrintTrail() {
         // Remove print after fade out
         setTimeout(() => {
           setPrints((prev) => prev.slice(1));
-        }, 1500);
+        }, 2500);
       }
     };
 
@@ -321,10 +321,10 @@ export function PawPrintTrail() {
             left: print.x,
             top: print.y,
             transform: `translate(-50%, -50%) rotate(${print.rotation}deg)`,
-            animation: "pawFade 1.5s ease-out forwards",
+            animation: "pawFade 2.5s ease-out forwards",
           }}
         >
-          <svg viewBox="0 0 24 24" className="w-6 h-6 text-black/20">
+          <svg viewBox="0 0 24 24" className="w-10 h-10 text-black/40">
             {/* Main pad */}
             <ellipse cx="12" cy="16" rx="5" ry="4" fill="currentColor" />
             {/* Toe beans */}
