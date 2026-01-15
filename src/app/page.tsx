@@ -4,7 +4,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { TimeGreeting } from "@/components/TimeGreeting";
 import { RevealSection } from "@/components/RevealSection";
 import { BlackCatLogo } from "@/components/BlackCatLogo";
-import { OriginStory } from "@/components/OriginStory";
+import { JourneyMap } from "@/components/JourneyMap";
 import { getFeaturedProducts } from "@/lib/products";
 
 export default function Home() {
@@ -77,38 +77,46 @@ export default function Home() {
         </RevealSection>
       </section>
 
-      {/* Story Section - Editorial asymmetry */}
-      <section className="section-gap bg-gray-50">
+      {/* Journey Section - Bangkok to New Orleans */}
+      <section className="section-gap bg-gray-900">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            <RevealSection direction="left" className="lg:col-span-5">
-              <div className="relative aspect-[4/5] bg-black overflow-hidden flex items-center justify-center p-8">
-                <OriginStory className="w-full h-full" />
-              </div>
-            </RevealSection>
-            <RevealSection direction="right" delay={200} className="lg:col-span-6 lg:col-start-7">
-              <div className="space-y-6 max-w-md">
-                <p className="text-meta text-accent">The Story</p>
-                <h2 className="text-section-title leading-tight">
-                  Wear them anywhere.
-                </h2>
-                <div className="space-y-4 text-gray-600 leading-relaxed">
-                  <p>
-                    Bar. Boat. Casual Sunday. Festive Friday. These shirts work
-                    anywhere you do.
-                  </p>
-                  <p>
-                    Sourced from Bangkok workshops. Sold in New Orleans. Each one
-                    made with quality cotton and careful attention to how it feels
-                    and how it wears.
-                  </p>
-                </div>
-                <Button href="/about" variant="outline">
-                  Learn More
-                </Button>
-              </div>
-            </RevealSection>
-          </div>
+          <RevealSection className="text-center mb-12">
+            <p className="text-meta text-accent mb-3">The Journey</p>
+            <h2 className="text-section-title text-white mb-4">
+              From Mr. Nong in Bangkok to New Orleans streets
+            </h2>
+          </RevealSection>
+          <RevealSection>
+            <JourneyMap />
+          </RevealSection>
+        </div>
+      </section>
+
+      {/* Story Section */}
+      <section className="section-gap bg-gray-50">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <RevealSection>
+            <p className="text-meta text-accent mb-3">The Story</p>
+            <h2 className="text-section-title leading-tight mb-6">
+              Wear them anywhere.
+            </h2>
+            <div className="space-y-4 text-gray-600 leading-relaxed">
+              <p>
+                Bar. Boat. Casual Sunday. Festive Friday. These shirts work
+                anywhere you do.
+              </p>
+              <p>
+                Made by Mr. Nong in Bangkok. Sold in New Orleans. Each one
+                crafted with quality cotton and careful attention to how it feels
+                and how it wears.
+              </p>
+            </div>
+            <div className="mt-8">
+              <Button href="/about" variant="outline">
+                Learn More
+              </Button>
+            </div>
+          </RevealSection>
         </div>
       </section>
 

@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     template: "%s | Black Cat Button Down",
   },
   description:
-    "Handcrafted button-down shirts created in Bangkok, sold in New Orleans. Premium fabrics, timeless designs, and meticulous craftsmanship.",
+    "Super soft button-down shirts made by Mr. Nong in Bangkok, sold in New Orleans. Quality cotton, bold prints, made to last.",
   keywords: [
     "button-down shirts",
     "handcrafted shirts",

@@ -8,7 +8,7 @@ interface BangkokToNolaPathProps {
 }
 
 const journeySteps = [
-  "fabric sourced",
+  "fabric selected",
   "pattern cut",
   "sewn with care",
   "shipped across oceans",
@@ -63,7 +63,7 @@ export function BangkokToNolaPath({ className = "" }: BangkokToNolaPathProps) {
       onBlur={() => setShowTooltip(false)}
       tabIndex={0}
       role="img"
-      aria-label="Journey from Bangkok to New Orleans: fabric sourced, pattern cut, sewn with care, shipped across oceans, worn with pride"
+      aria-label="Journey from Bangkok to New Orleans: fabric selected, pattern cut, sewn with care, shipped across oceans, worn with pride"
     >
       <svg
         viewBox="0 0 400 80"
