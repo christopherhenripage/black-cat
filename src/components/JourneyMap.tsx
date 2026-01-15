@@ -154,49 +154,20 @@ export function JourneyMap() {
             strokeWidth="2"
           />
 
-          {/* Thailand silhouette (LEFT side) */}
-          <g transform="translate(15, 85)">
-            {/* Thailand - wide axe-head north, eastern bulge, narrow waist, southern peninsula */}
-            <path
-              d="M30 8
-                 L25 2 L35 5 L45 0 L55 4 L65 0 L75 5 L85 2 L95 8
-                 L105 5 L112 12 L108 20 L115 28 L110 35
-                 L118 42 L112 50 L105 48 L100 55 L108 65
-                 L100 72 L92 68 L85 75 L90 85 L82 92
-                 L75 88 L68 95 L60 90 L55 98 L48 95
-                 L45 105 L50 115 L45 125 L48 135 L42 145
-                 L45 155 L40 165 L42 175 L38 182 L42 190
-                 L38 198 L35 192 L32 200 L28 195 L25 188
-                 L28 180 L22 172 L25 162 L20 152 L25 142
-                 L18 132 L22 122 L15 112 L18 102 L12 92
-                 L15 82 L8 72 L12 62 L5 52 L10 42
-                 L5 32 L12 22 L8 15 L15 8 L22 12 L30 8 Z"
-              fill="rgba(251, 146, 60, 0.55)"
-              stroke="rgba(251, 191, 36, 0.85)"
-              strokeWidth="2"
-            />
+          {/* Bangkok location - stylized glowing circle */}
+          <g>
+            {/* Outer glow rings */}
+            <circle cx="120" cy="180" r="45" fill="rgba(251, 146, 60, 0.15)" />
+            <circle cx="120" cy="180" r="35" fill="rgba(251, 146, 60, 0.25)" />
+            <circle cx="120" cy="180" r="25" fill="rgba(251, 146, 60, 0.4)" />
           </g>
 
-          {/* Louisiana boot shape (RIGHT side) */}
-          <g transform="translate(610, 110)">
-            {/* Louisiana - traced from reference: flat top, L-shape boot, irregular delta coastline */}
-            <path
-              d="M0 0
-                 L120 0 L120 5 L125 5 L125 0 L175 0
-                 L175 8 L172 15 L175 22 L170 30 L172 38
-                 L168 45 L170 55 L165 65 L168 72 L162 80
-                 L158 90 L150 95 L145 92 L140 98 L135 95
-                 L130 102 L138 110 L145 115 L152 122 L158 128
-                 L162 135 L158 140 L150 145 L142 142 L135 148
-                 L125 152 L118 148 L108 155 L98 152 L88 158
-                 L78 155 L68 160 L58 155 L52 162 L45 158
-                 L40 150 L35 142 L30 148 L25 140 L20 132
-                 L15 125 L18 115 L12 105 L8 95 L5 82
-                 L2 68 L0 52 L0 35 L0 0 Z"
-              fill="rgba(34, 197, 94, 0.55)"
-              stroke="rgba(74, 222, 128, 0.85)"
-              strokeWidth="2"
-            />
+          {/* New Orleans location - stylized glowing circle */}
+          <g>
+            {/* Outer glow rings */}
+            <circle cx="680" cy="180" r="45" fill="rgba(34, 197, 94, 0.15)" />
+            <circle cx="680" cy="180" r="35" fill="rgba(34, 197, 94, 0.25)" />
+            <circle cx="680" cy="180" r="25" fill="rgba(34, 197, 94, 0.4)" />
           </g>
 
           {/* Flight path - dotted background */}
