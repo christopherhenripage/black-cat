@@ -155,17 +155,22 @@ export function JourneyMap() {
           />
 
           {/* Thailand silhouette (LEFT side) */}
-          <g transform="translate(50, 105)">
-            {/* Thailand - recognizable shape: wide north, narrow middle, long southern peninsula */}
+          <g transform="translate(25, 95)">
+            {/* Thailand - traced from reference: jagged north, eastern bulge, narrow waist, southern peninsula */}
             <path
-              d="M40 0
-                 L70 5 L85 0 L95 10 L90 25 L95 40 L85 50
-                 L75 55 L65 50 L55 55 L50 70 L55 85
-                 L50 100 L45 115 L50 130 L48 145 L52 160
-                 L48 175 L52 185 L55 175 L60 185 L58 170
-                 L62 155 L58 140 L62 125 L55 110 L60 95
-                 L55 80 L60 65 L50 55 L40 60 L30 50
-                 L25 35 L30 20 L25 10 L40 0 Z"
+              d="M35 5
+                 L30 0 L40 3 L50 0 L55 5 L65 2 L75 8 L85 5 L90 12
+                 L95 8 L100 15 L95 22 L102 28 L98 35 L105 42
+                 L100 48 L95 45 L88 52 L92 60 L85 65 L80 62
+                 L75 70 L70 75 L65 72 L60 80 L55 85
+                 L50 82 L52 90 L48 98 L52 108 L48 118
+                 L45 125 L48 135 L44 145 L48 155 L45 165
+                 L42 175 L45 182 L40 188 L38 180 L35 185
+                 L32 178 L30 170 L35 162 L32 152 L38 142
+                 L35 132 L40 122 L38 112 L42 102 L38 92
+                 L35 82 L30 75 L25 68 L20 60 L25 52
+                 L22 45 L28 38 L25 30 L30 22 L28 15
+                 L32 10 L35 5 Z"
               fill="rgba(251, 146, 60, 0.55)"
               stroke="rgba(251, 191, 36, 0.85)"
               strokeWidth="2"
@@ -173,17 +178,21 @@ export function JourneyMap() {
           </g>
 
           {/* Louisiana boot shape (RIGHT side) */}
-          <g transform="translate(615, 115)">
-            {/* Louisiana - the boot: flat top, boot heel on left, toe pointing right */}
+          <g transform="translate(610, 110)">
+            {/* Louisiana - traced from reference: flat top, L-shape boot, irregular delta coastline */}
             <path
               d="M0 0
-                 L130 0 L135 5 L140 0 L160 2
-                 L158 20 L160 40 L155 60 L158 75
-                 L150 85 L140 90 L125 88 L115 95
-                 L120 105 L135 115 L145 125 L140 135
-                 L125 140 L105 138 L85 145 L65 150
-                 L45 145 L30 135 L20 120 L15 100
-                 L10 75 L5 50 L0 25 L0 0 Z"
+                 L120 0 L120 5 L125 5 L125 0 L175 0
+                 L175 8 L172 15 L175 22 L170 30 L172 38
+                 L168 45 L170 55 L165 65 L168 72 L162 80
+                 L158 90 L150 95 L145 92 L140 98 L135 95
+                 L130 102 L138 110 L145 115 L152 122 L158 128
+                 L162 135 L158 140 L150 145 L142 142 L135 148
+                 L125 152 L118 148 L108 155 L98 152 L88 158
+                 L78 155 L68 160 L58 155 L52 162 L45 158
+                 L40 150 L35 142 L30 148 L25 140 L20 132
+                 L15 125 L18 115 L12 105 L8 95 L5 82
+                 L2 68 L0 52 L0 35 L0 0 Z"
               fill="rgba(34, 197, 94, 0.55)"
               stroke="rgba(74, 222, 128, 0.85)"
               strokeWidth="2"
