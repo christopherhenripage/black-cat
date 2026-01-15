@@ -155,22 +155,22 @@ export function JourneyMap() {
           />
 
           {/* Thailand silhouette (LEFT side) */}
-          <g transform="translate(25, 95)">
-            {/* Thailand - traced from reference: jagged north, eastern bulge, narrow waist, southern peninsula */}
+          <g transform="translate(15, 85)">
+            {/* Thailand - wide axe-head north, eastern bulge, narrow waist, southern peninsula */}
             <path
-              d="M35 5
-                 L30 0 L40 3 L50 0 L55 5 L65 2 L75 8 L85 5 L90 12
-                 L95 8 L100 15 L95 22 L102 28 L98 35 L105 42
-                 L100 48 L95 45 L88 52 L92 60 L85 65 L80 62
-                 L75 70 L70 75 L65 72 L60 80 L55 85
-                 L50 82 L52 90 L48 98 L52 108 L48 118
-                 L45 125 L48 135 L44 145 L48 155 L45 165
-                 L42 175 L45 182 L40 188 L38 180 L35 185
-                 L32 178 L30 170 L35 162 L32 152 L38 142
-                 L35 132 L40 122 L38 112 L42 102 L38 92
-                 L35 82 L30 75 L25 68 L20 60 L25 52
-                 L22 45 L28 38 L25 30 L30 22 L28 15
-                 L32 10 L35 5 Z"
+              d="M30 8
+                 L25 2 L35 5 L45 0 L55 4 L65 0 L75 5 L85 2 L95 8
+                 L105 5 L112 12 L108 20 L115 28 L110 35
+                 L118 42 L112 50 L105 48 L100 55 L108 65
+                 L100 72 L92 68 L85 75 L90 85 L82 92
+                 L75 88 L68 95 L60 90 L55 98 L48 95
+                 L45 105 L50 115 L45 125 L48 135 L42 145
+                 L45 155 L40 165 L42 175 L38 182 L42 190
+                 L38 198 L35 192 L32 200 L28 195 L25 188
+                 L28 180 L22 172 L25 162 L20 152 L25 142
+                 L18 132 L22 122 L15 112 L18 102 L12 92
+                 L15 82 L8 72 L12 62 L5 52 L10 42
+                 L5 32 L12 22 L8 15 L15 8 L22 12 L30 8 Z"
               fill="rgba(251, 146, 60, 0.55)"
               stroke="rgba(251, 191, 36, 0.85)"
               strokeWidth="2"
