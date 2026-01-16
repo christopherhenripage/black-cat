@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useMardiGras } from "./MardiGrasProvider";
 
 interface PeekingCatProps {
   className?: string;
@@ -118,6 +119,7 @@ export function FloatingCat() {
   const [isVisible, setIsVisible] = useState(false);
   const [walkCycle, setWalkCycle] = useState(0);
   const reducedMotion = useReducedMotion();
+  const { isMardiGras } = useMardiGras();
 
   useEffect(() => {
     if (reducedMotion) return;
@@ -185,6 +187,17 @@ export function FloatingCat() {
           }}
         />
 
+        {/* Mardi Gras beads around neck */}
+        {isMardiGras && (
+          <g>
+            <circle cx="35" cy="28" r="2" fill="#9333ea" />
+            <circle cx="40" cy="30" r="2" fill="#eab308" />
+            <circle cx="45" cy="31" r="2" fill="#22c55e" />
+            <circle cx="50" cy="30" r="2" fill="#9333ea" />
+            <circle cx="55" cy="28" r="2" fill="#eab308" />
+          </g>
+        )}
+
         {/* Body */}
         <ellipse cx="50" cy="25" rx="30" ry="15" fill="black" />
 
@@ -237,13 +250,39 @@ export function FloatingCat() {
         <path d="M11 10 L10 3 L16 8 Z" fill="#ff6b9d" />
         <path d="M24 8 L29 3 L28 10 Z" fill="#ff6b9d" />
 
-        {/* Eyes */}
-        <ellipse cx="15" cy="16" rx="3" ry="4" fill="#22c55e" />
-        <ellipse cx="25" cy="16" rx="3" ry="4" fill="#22c55e" />
-        <ellipse cx="15" cy="16" rx="1.5" ry="2.5" fill="black" />
-        <ellipse cx="25" cy="16" rx="1.5" ry="2.5" fill="black" />
-        <circle cx="14" cy="15" r="1" fill="white" />
-        <circle cx="24" cy="15" r="1" fill="white" />
+        {/* Mardi Gras Mask */}
+        {isMardiGras ? (
+          <>
+            {/* Mask shape */}
+            <path
+              d="M5 14 Q10 10, 20 10 Q30 10, 35 14 Q32 18, 28 17 L27 20 L20 18 L13 20 L12 17 Q8 18, 5 14"
+              fill="#9333ea"
+              stroke="#eab308"
+              strokeWidth="1"
+            />
+            {/* Eye holes */}
+            <ellipse cx="13" cy="15" rx="4" ry="3" fill="black" />
+            <ellipse cx="27" cy="15" rx="4" ry="3" fill="black" />
+            {/* Eyes through mask */}
+            <ellipse cx="13" cy="15" rx="2.5" ry="2" fill="#22c55e" />
+            <ellipse cx="27" cy="15" rx="2.5" ry="2" fill="#22c55e" />
+            <circle cx="12" cy="14" r="0.8" fill="white" />
+            <circle cx="26" cy="14" r="0.8" fill="white" />
+            {/* Mask decorations */}
+            <circle cx="20" cy="11" r="1.5" fill="#eab308" />
+            <path d="M18 8 L20 5 L22 8" stroke="#22c55e" strokeWidth="1" fill="none" />
+          </>
+        ) : (
+          <>
+            {/* Normal Eyes */}
+            <ellipse cx="15" cy="16" rx="3" ry="4" fill="#22c55e" />
+            <ellipse cx="25" cy="16" rx="3" ry="4" fill="#22c55e" />
+            <ellipse cx="15" cy="16" rx="1.5" ry="2.5" fill="black" />
+            <ellipse cx="25" cy="16" rx="1.5" ry="2.5" fill="black" />
+            <circle cx="14" cy="15" r="1" fill="white" />
+            <circle cx="24" cy="15" r="1" fill="white" />
+          </>
+        )}
 
         {/* Nose */}
         <path d="M20 20 L18 23 L22 23 Z" fill="#ff6b9d" />

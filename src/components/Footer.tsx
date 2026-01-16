@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { PeekingCat } from "./PeekingCat";
+import { MardiGrasToggle } from "./MardiGrasProvider";
 
 export function Footer() {
   return (
@@ -99,6 +100,8 @@ export function Footer() {
           <p className="text-gray-500 text-sm">
             &copy; {new Date().getFullYear()} Black Cat Button Down. All rights reserved.
           </p>
+          {/* Mardi Gras Mode Toggle */}
+          <MardiGrasToggle />
         </div>
       </div>
     </footer>

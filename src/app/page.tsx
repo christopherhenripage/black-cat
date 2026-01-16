@@ -1,10 +1,9 @@
-import Image from "next/image";
 import { Button } from "@/components/Button";
 import { ProductCard } from "@/components/ProductCard";
 import { TimeGreeting } from "@/components/TimeGreeting";
 import { RevealSection } from "@/components/RevealSection";
-import { BlackCatLogo } from "@/components/BlackCatLogo";
 import { JourneyMap } from "@/components/JourneyMap";
+import { HeroSection } from "@/components/MardiGrasHero";
 import { getFeaturedProducts } from "@/lib/products";
 
 export default function Home() {
@@ -15,42 +14,8 @@ export default function Home() {
       {/* Time Greeting */}
       <TimeGreeting className="bg-gray-50 border-b border-gray-100" />
 
-      {/* Hero Section - Editorial, minimal */}
-      <section className="relative min-h-[85vh] flex items-center justify-center bg-black text-white overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/70 z-10" />
-        <div className="absolute inset-0">
-          <Image
-            src="/images/midnight-classic-1.svg"
-            alt="Hero background"
-            fill
-            className="object-cover opacity-30"
-            priority
-          />
-        </div>
-        <div className="relative z-20 text-center px-4 max-w-3xl mx-auto">
-          {/* Black Cat Logo */}
-          <div className="flex justify-center mb-8">
-            <BlackCatLogo size="hero" color="black" animated glowOnDark />
-          </div>
-          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tight mb-6">
-            Black Cat
-          </h1>
-          <p className="text-lg md:text-xl text-gray-300 mb-4 max-w-md mx-auto leading-relaxed">
-            Super soft button-downs from Bangkok.
-          </p>
-          <p className="text-sm text-gray-500 mb-10 tracking-wide">
-            Sold in New Orleans
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button href="/shop" variant="secondary" size="lg">
-              Shop Collection
-            </Button>
-            <Button href="/order" variant="outline" size="lg" className="border-white/40 text-white hover:bg-white hover:text-black">
-              Request to Order
-            </Button>
-          </div>
-        </div>
-      </section>
+      {/* Hero Section - switches between regular and Mardi Gras */}
+      <HeroSection />
 
       {/* Featured Products */}
       <section className="section-gap px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
@@ -106,7 +71,7 @@ export default function Home() {
                 anywhere you do.
               </p>
               <p>
-                Found in Bangkok. Sold in New Orleans. Super soft cotton,
+                Made in Bangkok. Sold in New Orleans. Super soft cotton,
                 bold prints, and careful attention to how it feels and wears.
               </p>
             </div>

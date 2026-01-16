@@ -19,7 +19,7 @@ export function ProductCard({ product }: ProductCardProps) {
     >
       <article className="space-y-3">
         {/* Image - gallery style with subtle hover */}
-        <FabricHoverOverlay className="relative aspect-[3/4] bg-gray-50 overflow-hidden">
+        <FabricHoverOverlay className="relative aspect-[3/4] bg-gray-100 overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={imageSrc}

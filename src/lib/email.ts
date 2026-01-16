@@ -35,34 +35,100 @@ Notes: ${order.notes || "None"}
 }
 
 function getOwnerEmailHtml(order: OrderRequest): string {
+  const fulfillmentLabel = order.fulfillmentMethod === "pickup"
+    ? "🏪 Pickup"
+    : order.fulfillmentMethod === "delivery"
+    ? "🚗 Delivery"
+    : "📦 Shipping";
+
   return `
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>New Order Request</title>
 </head>
-<body style="font-family: system-ui, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-  <h1 style="color: #000; border-bottom: 2px solid #c9a227; padding-bottom: 10px;">New Order Request</h1>
+<body style="font-family: system-ui, -apple-system, sans-serif; margin: 0; padding: 0; background-color: #f5f5f5;">
+  <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff;">
+    <!-- Header -->
+    <div style="background-color: #c9a227; padding: 20px; text-align: center;">
+      <h1 style="color: #000; font-size: 18px; font-weight: bold; margin: 0; letter-spacing: 1px;">
+        🐱 NEW ORDER REQUEST
+      </h1>
+    </div>
 
-  <h2 style="color: #333;">Customer Details</h2>
-  <p><strong>Name:</strong> ${order.name}</p>
-  <p><strong>Email:</strong> <a href="mailto:${order.email}">${order.email}</a></p>
-  <p><strong>Phone:</strong> ${order.phone || "Not provided"}</p>
+    <!-- Quick glance -->
+    <div style="padding: 25px; border-bottom: 1px solid #eee;">
+      <table style="width: 100%;">
+        <tr>
+          <td style="font-size: 28px; font-weight: bold; color: #000;">${order.productName}</td>
+        </tr>
+        <tr>
+          <td style="color: #666; padding-top: 5px;">
+            Size: <strong>${order.size || "TBD"}</strong> &nbsp;|&nbsp;
+            Qty: <strong>${order.quantity}</strong> &nbsp;|&nbsp;
+            ${fulfillmentLabel}
+          </td>
+        </tr>
+      </table>
+    </div>
 
-  <h2 style="color: #333;">Order Details</h2>
-  <p><strong>Product:</strong> ${order.productName}</p>
-  <p><strong>Size:</strong> ${order.size || "Not specified"}</p>
-  <p><strong>Quantity:</strong> ${order.quantity}</p>
-  <p><strong>Fulfillment:</strong> ${order.fulfillmentMethod}</p>
-  ${order.fulfillmentMethod === "shipping" ? `<p><strong>Shipping Address:</strong><br>${order.shippingAddress?.replace(/\n/g, "<br>")}</p>` : ""}
+    <!-- Customer info -->
+    <div style="padding: 25px; background-color: #fafafa;">
+      <h2 style="color: #000; font-size: 14px; font-weight: bold; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: 1px;">
+        Customer
+      </h2>
+      <p style="margin: 0 0 8px 0;">
+        <strong>${order.name}</strong>
+      </p>
+      <p style="margin: 0 0 8px 0;">
+        <a href="mailto:${order.email}" style="color: #0066cc;">${order.email}</a>
+      </p>
+      <p style="margin: 0; color: #666;">
+        ${order.phone || "No phone provided"}
+      </p>
+    </div>
 
-  ${order.notes ? `<h2 style="color: #333;">Notes</h2><p>${order.notes}</p>` : ""}
+    ${order.fulfillmentMethod === "shipping" && order.shippingAddress ? `
+    <!-- Shipping address -->
+    <div style="padding: 25px; border-top: 1px solid #eee;">
+      <h2 style="color: #000; font-size: 14px; font-weight: bold; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: 1px;">
+        Ship To
+      </h2>
+      <p style="margin: 0; color: #333; line-height: 1.6;">
+        ${order.shippingAddress.replace(/\n/g, "<br>")}
+      </p>
+    </div>
+    ` : ""}
 
-  <hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;">
-  <p style="color: #666; font-size: 12px;">
-    This order request was submitted via <a href="${SITE_URL}">${SITE_URL}</a>
-  </p>
+    ${order.notes ? `
+    <!-- Notes -->
+    <div style="padding: 25px; border-top: 1px solid #eee;">
+      <h2 style="color: #000; font-size: 14px; font-weight: bold; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: 1px;">
+        Notes
+      </h2>
+      <p style="margin: 0; color: #333; line-height: 1.6; font-style: italic;">
+        "${order.notes}"
+      </p>
+    </div>
+    ` : ""}
+
+    <!-- Actions -->
+    <div style="padding: 25px; text-align: center; border-top: 1px solid #eee;">
+      <a href="mailto:${order.email}?subject=Re: Your Black Cat Order Request - ${order.productName}"
+         style="display: inline-block; background-color: #000; color: #fff; padding: 12px 30px; text-decoration: none; font-size: 14px; font-weight: bold;">
+        Reply to Customer
+      </a>
+    </div>
+
+    <!-- Footer -->
+    <div style="padding: 15px; background-color: #f5f5f5; text-align: center;">
+      <p style="margin: 0; color: #999; font-size: 11px;">
+        Submitted via <a href="${SITE_URL}" style="color: #999;">${SITE_URL}</a>
+      </p>
+    </div>
+  </div>
 </body>
 </html>
   `.trim();
@@ -74,39 +140,97 @@ function getCustomerEmailHtml(order: OrderRequest): string {
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Order Request Received - Black Cat Button Down</title>
 </head>
-<body style="font-family: system-ui, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-  <h1 style="color: #000; border-bottom: 2px solid #c9a227; padding-bottom: 10px;">Thank You for Your Order Request</h1>
+<body style="font-family: 'Georgia', serif; margin: 0; padding: 0; background-color: #f9f9f9;">
+  <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff;">
+    <!-- Header with cat silhouette -->
+    <div style="background-color: #000000; padding: 40px 20px; text-align: center;">
+      <!-- Simple cat silhouette using CSS -->
+      <div style="margin-bottom: 16px;">
+        <svg width="60" height="60" viewBox="0 0 100 100" style="display: inline-block;">
+          <path d="M25 35 L35 15 L45 35 Z" fill="#c9a227"/>
+          <path d="M55 35 L65 15 L75 35 Z" fill="#c9a227"/>
+          <ellipse cx="50" cy="45" rx="28" ry="24" fill="#c9a227"/>
+          <ellipse cx="50" cy="75" rx="22" ry="20" fill="#c9a227"/>
+          <path d="M72 75 Q 90 70, 92 50 Q 94 35, 85 30" stroke="#c9a227" stroke-width="8" fill="none" stroke-linecap="round"/>
+          <ellipse cx="41" cy="42" rx="4" ry="5" fill="#22c55e"/>
+          <ellipse cx="59" cy="42" rx="4" ry="5" fill="#22c55e"/>
+        </svg>
+      </div>
+      <h1 style="color: #ffffff; font-size: 24px; font-weight: normal; margin: 0; letter-spacing: 2px;">
+        BLACK CAT BUTTON DOWN
+      </h1>
+      <p style="color: #c9a227; font-size: 12px; margin: 8px 0 0 0; letter-spacing: 1px;">
+        BANGKOK → NEW ORLEANS
+      </p>
+    </div>
 
-  <p>Hi ${order.name},</p>
+    <!-- Main content -->
+    <div style="padding: 40px 30px;">
+      <h2 style="color: #000; font-size: 22px; font-weight: normal; margin: 0 0 20px 0;">
+        We've got your request, ${order.name.split(' ')[0]}.
+      </h2>
 
-  <p>We've received your order request and we're excited to help you get your hands on a Black Cat shirt!</p>
+      <p style="color: #555; line-height: 1.7; margin: 0 0 25px 0;">
+        Thanks for reaching out. We'll review your order and get back to you within 24-48 hours to confirm availability and next steps.
+      </p>
 
-  <h2 style="color: #333;">What's Next?</h2>
-  <ol>
-    <li>We'll review your request and check availability</li>
-    <li>Within 24-48 hours, we'll send you an email to confirm details</li>
-    <li>Once confirmed, we'll provide a secure payment link</li>
-    <li>After payment, we'll arrange your ${order.fulfillmentMethod === "pickup" ? "pickup" : order.fulfillmentMethod === "delivery" ? "delivery" : "shipping"}</li>
-  </ol>
+      <!-- Order summary box -->
+      <div style="background-color: #f9f9f9; padding: 25px; margin: 25px 0;">
+        <h3 style="color: #000; font-size: 14px; font-weight: bold; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: 1px;">
+          Your Request
+        </h3>
+        <table style="width: 100%; border-collapse: collapse;">
+          <tr>
+            <td style="color: #888; padding: 8px 0; font-size: 14px;">Product</td>
+            <td style="color: #000; padding: 8px 0; font-size: 14px; text-align: right;">${order.productName}</td>
+          </tr>
+          <tr>
+            <td style="color: #888; padding: 8px 0; font-size: 14px;">Size</td>
+            <td style="color: #000; padding: 8px 0; font-size: 14px; text-align: right;">${order.size || "To be confirmed"}</td>
+          </tr>
+          <tr>
+            <td style="color: #888; padding: 8px 0; font-size: 14px;">Quantity</td>
+            <td style="color: #000; padding: 8px 0; font-size: 14px; text-align: right;">${order.quantity}</td>
+          </tr>
+          <tr>
+            <td style="color: #888; padding: 8px 0; font-size: 14px;">Fulfillment</td>
+            <td style="color: #000; padding: 8px 0; font-size: 14px; text-align: right; text-transform: capitalize;">${order.fulfillmentMethod}</td>
+          </tr>
+        </table>
+      </div>
 
-  <h2 style="color: #333;">Your Request Summary</h2>
-  <p><strong>Product:</strong> ${order.productName}</p>
-  <p><strong>Size:</strong> ${order.size || "To be confirmed"}</p>
-  <p><strong>Quantity:</strong> ${order.quantity}</p>
-  <p><strong>Fulfillment:</strong> ${order.fulfillmentMethod}</p>
+      <!-- What's next -->
+      <h3 style="color: #000; font-size: 14px; font-weight: bold; margin: 30px 0 15px 0; text-transform: uppercase; letter-spacing: 1px;">
+        What Happens Next
+      </h3>
+      <div style="color: #555; line-height: 1.8; font-size: 14px;">
+        <p style="margin: 0 0 10px 0;">1. We check availability and confirm your order</p>
+        <p style="margin: 0 0 10px 0;">2. We'll reach out to coordinate payment</p>
+        <p style="margin: 0 0 10px 0;">3. Your shirt heads your way</p>
+      </div>
 
-  <p>If you have any questions in the meantime, just reply to this email or reach out at <a href="mailto:hello@blackcatbuttondown.com">hello@blackcatbuttondown.com</a>.</p>
+      <p style="color: #555; line-height: 1.7; margin: 30px 0 0 0;">
+        Questions? Just reply to this email.
+      </p>
 
-  <p>Cheers,<br>The Black Cat Button Down Team</p>
+      <p style="color: #000; margin: 30px 0 0 0;">
+        — The Black Cat Team
+      </p>
+    </div>
 
-  <hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;">
-  <p style="color: #666; font-size: 12px;">
-    Black Cat Button Down<br>
-    Created in Bangkok / Sold in New Orleans<br>
-    <a href="${SITE_URL}">${SITE_URL}</a>
-  </p>
+    <!-- Footer -->
+    <div style="background-color: #000; padding: 25px 30px; text-align: center;">
+      <p style="color: #888; font-size: 12px; margin: 0 0 5px 0;">
+        Found in Bangkok. Sold in New Orleans.
+      </p>
+      <p style="margin: 0;">
+        <a href="${SITE_URL}" style="color: #c9a227; font-size: 12px; text-decoration: none;">${SITE_URL}</a>
+      </p>
+    </div>
+  </div>
 </body>
 </html>
   `.trim();

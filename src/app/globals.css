@@ -382,3 +382,79 @@ button {
     scroll-behavior: auto;
   }
 }
+
+/* ========================================
+   MARDI GRAS MODE
+   ======================================== */
+
+/* Mardi Gras color overrides */
+body.mardi-gras {
+  --accent: #eab308; /* Gold */
+  --accent-light: #fbbf24;
+  --accent-dark: #ca8a04;
+  --mardi-purple: #9333ea;
+  --mardi-gold: #eab308;
+  --mardi-green: #22c55e;
+}
+
+/* Mardi Gras selection color */
+body.mardi-gras ::selection {
+  background: #9333ea;
+  color: white;
+}
+
+/* Mardi Gras header accent */
+body.mardi-gras header {
+  border-bottom-color: #9333ea;
+}
+
+/* Mardi Gras buttons */
+body.mardi-gras .bg-black {
+  background: linear-gradient(135deg, #9333ea 0%, #7c3aed 50%, #9333ea 100%);
+}
+
+body.mardi-gras .bg-accent {
+  background: linear-gradient(135deg, #eab308 0%, #fbbf24 50%, #eab308 100%);
+}
+
+/* Mardi Gras text accents */
+body.mardi-gras .text-accent {
+  background: linear-gradient(90deg, #9333ea, #eab308, #22c55e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Floating beads animation */
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-20vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Mardi Gras banner gradient */
+.mardi-gras-gradient {
+  background: linear-gradient(90deg, #9333ea, #eab308, #22c55e, #9333ea);
+  background-size: 300% 100%;
+  animation: mardiGrasShift 8s ease infinite;
+}
+
+@keyframes mardiGrasShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}

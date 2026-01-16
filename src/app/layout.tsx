@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Analytics } from "@/components/Analytics";
 import { KonamiProvider } from "@/components/KonamiProvider";
+import { MardiGrasProvider } from "@/components/MardiGrasProvider";
 import { FloatingCat, PawPrintTrail } from "@/components/PeekingCat";
 
 const inter = Inter({
@@ -86,12 +87,14 @@ export default function RootLayout({
         className={`${inter.variable} ${cormorant.variable} antialiased min-h-screen flex flex-col`}
       >
         <KonamiProvider>
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-          <FloatingCat />
-          <PawPrintTrail />
-          <Analytics />
+          <MardiGrasProvider>
+            <Header />
+            <main className="flex-1">{children}</main>
+            <Footer />
+            <FloatingCat />
+            <PawPrintTrail />
+            <Analytics />
+          </MardiGrasProvider>
         </KonamiProvider>
       </body>
     </html>
