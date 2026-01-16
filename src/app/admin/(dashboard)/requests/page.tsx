@@ -10,6 +10,9 @@ export const metadata: Metadata = {
 
 export default async function RequestsPage() {
   const requests = await prisma.orderRequest.findMany({
+    include: {
+      items: true,
+    },
     orderBy: [
       { status: "asc" },
       { createdAt: "desc" },
@@ -33,10 +36,7 @@ export default async function RequestsPage() {
                 Customer
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Product
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Size / Qty
+                Items
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Fulfillment
@@ -49,7 +49,7 @@ export default async function RequestsPage() {
           <tbody className="bg-white divide-y divide-gray-200">
             {requests.length === 0 ? (
               <tr>
-                <td colSpan={6} className="px-6 py-8 text-center text-gray-500">
+                <td colSpan={5} className="px-6 py-8 text-center text-gray-500">
                   No order requests yet.
                 </td>
               </tr>
@@ -71,10 +71,18 @@ export default async function RequestsPage() {
                     </div>
                   </td>
                   <td className="px-6 py-4 text-sm text-gray-900">
-                    {request.productSlug}
-                  </td>
-                  <td className="px-6 py-4 text-sm text-gray-900">
-                    {request.variantSize} x {request.quantity}
+                    {request.items.length > 0 ? (
+                      <ul className="space-y-1">
+                        {request.items.map((item) => (
+                          <li key={item.id}>
+                            {item.productName} ({item.variantSize}) x{item.quantity}
+                            {item.price && <span className="text-gray-500 ml-1">${(item.price / 100).toFixed(2)}</span>}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <span className="text-gray-400">No items</span>
+                    )}
                   </td>
                   <td className="px-6 py-4">
                     <div className="text-sm">
