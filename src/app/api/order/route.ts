@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { validateOrderRequest } from "@/lib/validation";
+import { validateCartOrder, validateOrderRequest } from "@/lib/validation";
 import { checkRateLimit, getRateLimitIdentifier } from "@/lib/rate-limit";
-import { sendOrderEmails } from "@/lib/email";
+import { sendOrderEmails, sendCartOrderEmails } from "@/lib/email";
 import prisma from "@/lib/db";
 
 export async function POST(request: NextRequest) {
@@ -33,68 +33,14 @@ export async function POST(request: NextRequest) {
     // Parse request body
     const body = await request.json();
 
-    // Validate input
-    const validation = validateOrderRequest(body);
+    // Check if this is a cart order (has items array) or single product order
+    const isCartOrder = Array.isArray(body.items);
 
-    if (!validation.success) {
-      // Don't reveal honeypot detection
-      if (validation.error === "spam_detected") {
-        return NextResponse.json({ success: true });
-      }
-
-      return NextResponse.json(
-        { error: validation.error },
-        { status: 400 }
-      );
+    if (isCartOrder) {
+      return handleCartOrder(body);
+    } else {
+      return handleSingleProductOrder(body);
     }
-
-    // Save to database
-    const fulfillmentMap: Record<string, "PICKUP" | "DELIVERY" | "SHIPPING"> = {
-      pickup: "PICKUP",
-      delivery: "DELIVERY",
-      shipping: "SHIPPING",
-    };
-
-    try {
-      await prisma.orderRequest.create({
-        data: {
-          customerName: validation.data!.name,
-          email: validation.data!.email,
-          phone: validation.data!.phone || null,
-          productSlug: validation.data!.productSlug,
-          variantSize: validation.data!.size || "Unknown",
-          quantity: validation.data!.quantity,
-          fulfillmentMethod:
-            fulfillmentMap[validation.data!.fulfillmentMethod] || "PICKUP",
-          shippingAddress: validation.data!.shippingAddress || null,
-          notes: validation.data!.notes || null,
-        },
-      });
-    } catch (dbError) {
-      console.error("Failed to save order request to database:", dbError);
-      // Continue even if DB save fails
-    }
-
-    // Send emails
-    const emailResult = await sendOrderEmails(validation.data!);
-
-    if (!emailResult.success) {
-      console.error("Email sending failed:", emailResult.error);
-      // Still return success to user - we've logged the order
-      // In production, you might want to handle this differently
-    }
-
-    // Log for debugging
-    console.log(
-      `Order request processed: ${validation.data!.productName} - ${
-        validation.data!.email
-      } (via ${emailResult.method})`
-    );
-
-    return NextResponse.json({
-      success: true,
-      message: "Order request submitted successfully",
-    });
   } catch (error) {
     console.error("Order API error:", error);
     return NextResponse.json(
@@ -102,6 +48,126 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     );
   }
+}
+
+// Handle cart orders (multiple items)
+async function handleCartOrder(body: unknown) {
+  const validation = validateCartOrder(body);
+
+  if (!validation.success) {
+    if (validation.error === "spam_detected") {
+      return NextResponse.json({ success: true });
+    }
+    return NextResponse.json({ error: validation.error }, { status: 400 });
+  }
+
+  const fulfillmentMap: Record<string, "PICKUP" | "DELIVERY" | "SHIPPING"> = {
+    pickup: "PICKUP",
+    delivery: "DELIVERY",
+    shipping: "SHIPPING",
+  };
+
+  try {
+    await prisma.orderRequest.create({
+      data: {
+        customerName: validation.data!.name,
+        email: validation.data!.email,
+        phone: validation.data!.phone || null,
+        fulfillmentMethod:
+          fulfillmentMap[validation.data!.fulfillmentMethod] || "PICKUP",
+        shippingAddress: validation.data!.shippingAddress || null,
+        notes: validation.data!.notes || null,
+        items: {
+          create: validation.data!.items.map((item) => ({
+            productSlug: item.productSlug,
+            productName: item.productName,
+            variantSize: item.size,
+            quantity: item.quantity,
+            price: Math.round(item.price * 100), // Convert to cents
+          })),
+        },
+      },
+    });
+  } catch (dbError) {
+    console.error("Failed to save cart order to database:", dbError);
+  }
+
+  // Send emails
+  const emailResult = await sendCartOrderEmails(validation.data!);
+
+  if (!emailResult.success) {
+    console.error("Email sending failed:", emailResult.error);
+  }
+
+  const itemCount = validation.data!.items.reduce((sum, item) => sum + item.quantity, 0);
+  console.log(
+    `Cart order processed: ${itemCount} items - ${validation.data!.email} (via ${emailResult.method})`
+  );
+
+  return NextResponse.json({
+    success: true,
+    message: "Order request submitted successfully",
+  });
+}
+
+// Handle single product orders (legacy)
+async function handleSingleProductOrder(body: unknown) {
+  const validation = validateOrderRequest(body);
+
+  if (!validation.success) {
+    if (validation.error === "spam_detected") {
+      return NextResponse.json({ success: true });
+    }
+    return NextResponse.json({ error: validation.error }, { status: 400 });
+  }
+
+  const fulfillmentMap: Record<string, "PICKUP" | "DELIVERY" | "SHIPPING"> = {
+    pickup: "PICKUP",
+    delivery: "DELIVERY",
+    shipping: "SHIPPING",
+  };
+
+  try {
+    await prisma.orderRequest.create({
+      data: {
+        customerName: validation.data!.name,
+        email: validation.data!.email,
+        phone: validation.data!.phone || null,
+        fulfillmentMethod:
+          fulfillmentMap[validation.data!.fulfillmentMethod] || "PICKUP",
+        shippingAddress: validation.data!.shippingAddress || null,
+        notes: validation.data!.notes || null,
+        items: {
+          create: {
+            productSlug: validation.data!.productSlug,
+            productName: validation.data!.productName,
+            variantSize: validation.data!.size || "Unknown",
+            quantity: validation.data!.quantity,
+            price: null,
+          },
+        },
+      },
+    });
+  } catch (dbError) {
+    console.error("Failed to save order request to database:", dbError);
+  }
+
+  const emailResult = await sendOrderEmails(validation.data!);
+
+  if (!emailResult.success) {
+    console.error("Email sending failed:", emailResult.error);
+  }
+
+  console.log(
+    `Order request processed: ${validation.data!.productName} - ${
+      validation.data!.email
+    } (via ${emailResult.method})`
+  );
+
+  return NextResponse.json({
+    success: true,
+    message: "Order request submitted successfully",
+  });
 }
 
 // Optionally handle other methods

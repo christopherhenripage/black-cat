@@ -6,6 +6,8 @@ import { Footer } from "@/components/Footer";
 import { Analytics } from "@/components/Analytics";
 import { KonamiProvider } from "@/components/KonamiProvider";
 import { MardiGrasProvider } from "@/components/MardiGrasProvider";
+import { CartProvider } from "@/components/CartProvider";
+import { CartDrawer } from "@/components/CartDrawer";
 import { FloatingCat, PawPrintTrail } from "@/components/PeekingCat";
 
 const inter = Inter({
@@ -88,12 +90,15 @@ export default function RootLayout({
       >
         <KonamiProvider>
           <MardiGrasProvider>
-            <Header />
-            <main className="flex-1">{children}</main>
-            <Footer />
-            <FloatingCat />
-            <PawPrintTrail />
-            <Analytics />
+            <CartProvider>
+              <Header />
+              <main className="flex-1">{children}</main>
+              <Footer />
+              <CartDrawer />
+              <FloatingCat />
+              <PawPrintTrail />
+              <Analytics />
+            </CartProvider>
           </MardiGrasProvider>
         </KonamiProvider>
       </body>

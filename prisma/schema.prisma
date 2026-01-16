@@ -47,14 +47,23 @@ model OrderRequest {
   customerName      String
   email             String
   phone             String?
-  productSlug       String
-  variantSize       String
-  quantity          Int                 @default(1)
   fulfillmentMethod FulfillmentMethod   @default(PICKUP)
   shippingAddress   String?
   notes             String?
   status            OrderRequestStatus  @default(NEW)
   updatedAt         DateTime            @updatedAt
+  items             OrderItem[]
+}
+
+model OrderItem {
+  id             String       @id @default(cuid())
+  orderRequest   OrderRequest @relation(fields: [orderRequestId], references: [id], onDelete: Cascade)
+  orderRequestId String
+  productSlug    String
+  productName    String
+  variantSize    String
+  quantity       Int          @default(1)
+  price          Int?         // cents
 }
 
 enum FulfillmentMethod {

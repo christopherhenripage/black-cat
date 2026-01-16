@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getAllProducts, getProductBySlug, isProductInStock } from "@/lib/products";
+import { getAllProducts, getProductBySlug } from "@/lib/products";
 import { ImageGallery } from "@/components/ImageGallery";
-import { OrderForm } from "@/components/OrderForm";
+import { AddToCartButton } from "@/components/AddToCartButton";
 import Link from "next/link";
 
 interface ProductPageProps {
@@ -47,8 +47,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
     notFound();
   }
 
-  const inStock = isProductInStock(product);
-
   return (
     <div className="pb-20 md:pb-0">
       {/* Breadcrumb */}
@@ -89,11 +87,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </h1>
               {product.price && (
                 <p className="text-2xl font-medium">${product.price}</p>
-              )}
-              {!inStock && (
-                <p className="mt-2 text-red-600 font-medium">
-                  Currently Sold Out
-                </p>
               )}
             </div>
 
@@ -145,15 +138,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </Link>
             </div>
 
-            {/* Order Form */}
+            {/* Add to Cart */}
             <div className="border-t pt-8">
-              <h2 className="font-display text-xl font-semibold mb-2">
-                Request to Order
-              </h2>
-              <p className="text-sm text-gray-500 mb-6">
-                We&apos;ll reply within 24–48 hours to confirm availability and coordinate pickup or shipping.
-              </p>
-              <OrderForm product={product} />
+              <AddToCartButton product={product} />
             </div>
           </div>
         </div>

@@ -3,14 +3,46 @@
 import Link from "next/link";
 import { useState } from "react";
 import { BlackCatIcon } from "./BlackCatLogo";
+import { useCart } from "./CartProvider";
 
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/shop", label: "Shop" },
-  { href: "/order", label: "Order" },
   { href: "/about", label: "About" },
   { href: "/faq", label: "FAQ" },
 ];
+
+function CartButton() {
+  const { openCart, getCartCount, isHydrated } = useCart();
+  const count = getCartCount();
+
+  return (
+    <button
+      onClick={openCart}
+      className="relative p-2 text-gray-700 hover:text-black transition-colors"
+      aria-label={`Shopping cart with ${count} items`}
+    >
+      <svg
+        className="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+        />
+      </svg>
+      {isHydrated && count > 0 && (
+        <span className="absolute -top-1 -right-1 w-5 h-5 bg-accent text-white text-xs font-medium rounded-full flex items-center justify-center">
+          {count > 9 ? "9+" : count}
+        </span>
+      )}
+    </button>
+  );
+}
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -41,48 +73,52 @@ export function Header() {
             ))}
           </nav>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:block">
+          {/* Desktop Cart & CTA */}
+          <div className="hidden md:flex items-center gap-4">
+            <CartButton />
             <Link
-              href="/order"
+              href="/shop"
               className="inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium text-white bg-black hover:bg-gray-800 transition-colors rounded-none"
             >
-              Request to Order
+              Shop Now
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            type="button"
-            className="md:hidden p-2 text-gray-700 hover:text-black"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-expanded={isMenuOpen}
-            aria-controls="mobile-menu"
-            aria-label="Toggle menu"
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+          {/* Mobile Cart & Menu */}
+          <div className="md:hidden flex items-center gap-1">
+            <CartButton />
+            <button
+              type="button"
+              className="p-2 text-gray-700 hover:text-black"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-menu"
+              aria-label="Toggle menu"
             >
-              {isMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
-          </button>
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                {isMenuOpen ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -101,11 +137,11 @@ export function Header() {
               </Link>
             ))}
             <Link
-              href="/order"
+              href="/shop"
               className="block w-full mt-4 py-3 text-center text-base font-medium text-white bg-black hover:bg-gray-800 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              Request to Order
+              Shop Now
             </Link>
           </nav>
         </div>
@@ -114,10 +150,10 @@ export function Header() {
       {/* Mobile Sticky CTA - subtle, refined */}
       <div className="fixed bottom-0 left-0 right-0 md:hidden bg-white/95 backdrop-blur-sm border-t border-gray-200 py-3 px-4 z-50">
         <Link
-          href="/order"
+          href="/shop"
           className="block w-full py-2.5 text-center text-sm font-medium text-white bg-black hover:bg-gray-800 transition-colors"
         >
-          Request to Order
+          Shop Now
         </Link>
       </div>
     </header>
