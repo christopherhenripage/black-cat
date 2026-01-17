@@ -294,6 +294,23 @@ button {
   }
 }
 
+@keyframes rainbowSlide {
+  0% {
+    transform: translateX(0) rotate(-15deg);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(calc(100vw + 100px)) rotate(-15deg);
+    opacity: 0;
+  }
+}
+
 /* Typography utilities */
 .text-page-title {
   font-size: var(--text-page-title);
