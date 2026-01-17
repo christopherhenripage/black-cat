@@ -4,6 +4,7 @@ import { TimeGreeting } from "@/components/TimeGreeting";
 import { RevealSection } from "@/components/RevealSection";
 import { JourneyMap } from "@/components/JourneyMap";
 import { HeroSection } from "@/components/MardiGrasHero";
+import { RainbowCat } from "@/components/RainbowCat";
 import { getFeaturedProducts } from "@/lib/products";
 
 export default function Home() {
@@ -11,6 +12,9 @@ export default function Home() {
 
   return (
     <div className="pb-20 md:pb-0">
+      {/* Rainbow cat shooting star */}
+      <RainbowCat />
+
       {/* Time Greeting */}
       <TimeGreeting className="bg-gray-50 border-b border-gray-100" />
 
