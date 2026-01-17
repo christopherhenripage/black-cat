@@ -1,12 +1,16 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
-// Shooting star rainbow with black cat riding it
+// Shooting star rainbow with black cat riding it - responsive version
 export function RainbowCat() {
   const [isVisible, setIsVisible] = useState(false);
+  const reducedMotion = useReducedMotion();
 
   useEffect(() => {
+    if (reducedMotion) return;
+
     // Show streak every 15 seconds
     const showStreak = () => {
       setIsVisible(true);
@@ -21,13 +25,21 @@ export function RainbowCat() {
       clearTimeout(initial);
       clearInterval(interval);
     };
-  }, []);
+  }, [reducedMotion]);
 
-  if (!isVisible) return null;
+  if (!isVisible || reducedMotion) return null;
+
+  // Path defined in viewBox coordinates (0-100 scale)
+  // Arc goes from bottom-left to top-right across the viewport
+  const rainbowPath = "M -10 80 Q 25 20, 50 35 Q 75 50, 110 15";
 
   return (
     <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">
-      <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
+      <svg
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        className="absolute inset-0 w-full h-full"
+      >
         <defs>
           <linearGradient id="rainbowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="transparent" />
@@ -40,7 +52,7 @@ export function RainbowCat() {
             <stop offset="100%" stopColor="transparent" />
           </linearGradient>
           <filter id="starGlow">
-            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feGaussianBlur stdDeviation="0.3" result="blur" />
             <feMerge>
               <feMergeNode in="blur" />
               <feMergeNode in="blur" />
@@ -48,38 +60,40 @@ export function RainbowCat() {
             </feMerge>
           </filter>
         </defs>
+
         {/* Shooting star arc path */}
         <path
-          d="M -100 400 Q 300 50, 700 150 Q 1100 250, 1500 100"
+          d={rainbowPath}
           fill="none"
           stroke="url(#rainbowGradient)"
-          strokeWidth="9"
+          strokeWidth="0.8"
           strokeLinecap="round"
           filter="url(#starGlow)"
           style={{
-            strokeDasharray: 2000,
-            strokeDashoffset: 2000,
+            strokeDasharray: 200,
+            strokeDashoffset: 200,
             animation: "shootingStar 3s ease-out forwards",
           }}
         />
+
         {/* Sparkles trailing behind */}
-        {[0, 0.03, 0.06, 0.09, 0.12, 0.15, 0.18, 0.21].map((delay, i) => (
+        {[0, 0.03, 0.06, 0.09, 0.12, 0.15].map((delay, i) => (
           <g
             key={i}
             style={{
-              offsetPath: "path('M -100 400 Q 300 50, 700 150 Q 1100 250, 1500 100')",
+              offsetPath: `path('${rainbowPath}')`,
               animation: `starHead 3s ease-out ${delay}s forwards`,
             }}
           >
-            <g transform={`translate(${-20 - i * 15}, ${-60 + (i % 3) * 20})`}>
-              {/* Star/sparkle shape */}
+            <g transform={`translate(${-1.5 - i * 1}, ${-4 + (i % 3) * 1.5})`}>
+              {/* Star/sparkle shape - scaled for viewBox */}
               <path
-                d="M0,-8 L2,-2 L8,0 L2,2 L0,8 L-2,2 L-8,0 L-2,-2 Z"
-                fill={["#fff", "#ffff00", "#ff69b4", "#00ffff", "#ff8c00", "#00ff00", "#ff00ff", "#fff"][i]}
+                d="M0,-0.6 L0.15,-0.15 L0.6,0 L0.15,0.15 L0,0.6 L-0.15,0.15 L-0.6,0 L-0.15,-0.15 Z"
+                fill={["#fff", "#ffff00", "#ff69b4", "#00ffff", "#ff8c00", "#00ff00"][i]}
                 style={{
                   animation: `sparkle 0.5s ease-in-out ${i * 0.1}s infinite`,
-                  opacity: 1 - i * 0.1,
-                  transform: `scale(${1 - i * 0.08})`,
+                  opacity: 1 - i * 0.15,
+                  transform: `scale(${1 - i * 0.1})`,
                 }}
               />
             </g>
@@ -89,13 +103,13 @@ export function RainbowCat() {
         {/* Black cat riding the rainbow */}
         <g
           style={{
-            offsetPath: "path('M -100 400 Q 300 50, 700 150 Q 1100 250, 1500 100')",
+            offsetPath: `path('${rainbowPath}')`,
             offsetRotate: "auto",
             animation: "starHead 3s ease-out forwards",
           }}
         >
-          {/* Cat silhouette - positioned to "ride" the rainbow */}
-          <g transform="translate(-100, -155) scale(2.5)">
+          {/* Cat silhouette - scaled for viewBox (roughly 8x6 units) */}
+          <g transform="translate(-7, -11) scale(0.18)">
             {/* Body */}
             <ellipse cx="40" cy="50" rx="20" ry="12" fill="black" />
             {/* Head */}
