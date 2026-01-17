@@ -54,10 +54,11 @@ export function Header() {
           {/* Logo with Cat */}
           <Link
             href="/"
-            className="flex items-center gap-2 font-display text-lg md:text-xl font-bold tracking-tight hover:text-accent transition-colors"
+            className="flex items-center gap-2 font-display text-base sm:text-lg md:text-xl font-bold tracking-tight hover:text-accent transition-colors"
           >
             <BlackCatIcon size="md" />
-            <span>Black Cat Button Down</span>
+            <span className="hidden sm:inline">Black Cat Button Down</span>
+            <span className="sm:hidden">Black Cat</span>
           </Link>
 
           {/* Desktop Navigation */}
