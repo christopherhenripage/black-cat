@@ -11,7 +11,7 @@ export default function Home() {
   const featuredProducts = getFeaturedProducts();
 
   return (
-    <div className="pb-20 md:pb-0">
+    <div className="">
       {/* Rainbow cat shooting star */}
       <RainbowCat />
 

@@ -46,6 +46,7 @@ function CartButton() {
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { openCart } = useCart();
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-black/5">
@@ -85,40 +86,37 @@ export function Header() {
             </Link>
           </div>
 
-          {/* Mobile Cart & Menu */}
-          <div className="md:hidden flex items-center gap-2">
-            <CartButton />
-            <button
-              type="button"
-              className="p-2 text-black bg-gray-100 rounded-md hover:bg-gray-200 transition-colors"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-expanded={isMenuOpen}
-              aria-controls="mobile-menu"
-              aria-label="Toggle menu"
+          {/* Mobile Menu Button */}
+          <button
+            type="button"
+            className="md:hidden p-2.5 bg-black text-white rounded"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-menu"
+            aria-label="Menu"
+          >
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              viewBox="0 0 24 24"
             >
-              <svg
-                className="w-7 h-7"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2.5}
-                viewBox="0 0 24 24"
-              >
-                {isMenuOpen ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                )}
-              </svg>
-            </button>
-          </div>
+              {isMenuOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
         </div>
       </div>
 
@@ -136,6 +134,15 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
+            <button
+              onClick={() => {
+                setIsMenuOpen(false);
+                openCart();
+              }}
+              className="block w-full py-2 text-left text-base font-medium text-gray-700 hover:text-black transition-colors"
+            >
+              Cart
+            </button>
             <Link
               href="/shop"
               className="block w-full mt-4 py-3 text-center text-base font-medium text-white bg-black hover:bg-gray-800 transition-colors"
@@ -147,15 +154,6 @@ export function Header() {
         </div>
       )}
 
-      {/* Mobile Sticky CTA - subtle, refined */}
-      <div className="fixed bottom-0 left-0 right-0 md:hidden bg-white/95 backdrop-blur-sm border-t border-gray-200 py-3 px-4 z-50">
-        <Link
-          href="/shop"
-          className="block w-full py-2.5 text-center text-sm font-medium text-white bg-black hover:bg-gray-800 transition-colors"
-        >
-          Shop Now
-        </Link>
-      </div>
     </header>
   );
 }

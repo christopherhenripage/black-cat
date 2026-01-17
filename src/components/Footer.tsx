@@ -4,7 +4,7 @@ import { MardiGrasToggle } from "./MardiGrasProvider";
 
 export function Footer() {
   return (
-    <footer className="bg-black text-white pb-20 md:pb-0 relative">
+    <footer className="bg-black text-white  relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand */}

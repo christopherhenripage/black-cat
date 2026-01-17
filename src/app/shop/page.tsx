@@ -21,7 +21,7 @@ export default function ShopPage() {
   }, [selectedType, selectedAvailability]);
 
   return (
-    <div className="pb-20 md:pb-0">
+    <div className="">
       {/* Header */}
       <section className="bg-black text-white py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

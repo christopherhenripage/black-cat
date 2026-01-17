@@ -137,12 +137,9 @@ export function MardiGrasHero() {
           Celebrating in New Orleans
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex justify-center">
           <Button href="/shop" variant="secondary" size="lg" className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 border-0">
             Shop Collection
-          </Button>
-          <Button href="/order" variant="outline" size="lg" className="border-yellow-400/60 text-yellow-300 hover:bg-yellow-400 hover:text-purple-900">
-            Request to Order
           </Button>
         </div>
 
@@ -193,12 +190,9 @@ export function RegularHero() {
         <p className="text-sm text-gray-500 mb-10 tracking-wide">
           Sold in New Orleans
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex justify-center">
           <Button href="/shop" variant="secondary" size="lg">
             Shop Collection
-          </Button>
-          <Button href="/order" variant="outline" size="lg" className="border-white/40 text-white hover:bg-white hover:text-black">
-            Request to Order
           </Button>
         </div>
       </div>

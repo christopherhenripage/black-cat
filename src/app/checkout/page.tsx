@@ -140,7 +140,7 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div className="pb-20 md:pb-0">
+    <div className="">
       {/* Header */}
       <div className="bg-gray-50 border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
